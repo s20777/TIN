@@ -2,65 +2,57 @@
 <html lang="pl-PL">
 <head>
     <meta charset="UTF-8">
-    <title>Demo Test</title>
-    <link rel="stylesheet" href="../../css/style.css"/>
-    <script src="../../js/responsibleTable.js"></script>
+    <title>Lista wiele-do-wielu</title>
+    <link rel="stylesheet" href="../../../public/css/style.css"/>
 </head>
 <body>
-<h1>System do zarządzania pracownikami</h1>
-<header>
-
+    <h1>HR Department</h1>
+    <header>
     <nav>
         <ul>
-            <li><a href="../../index.html">Strona glowna</a>
-            <li><a href="../employee/list.html">Pracownicy</a>
+            <li><a href="../../index.ejs">Strona glowna</a>
+            <li><a href="../employee/list.ejs">Pracownicy</a>
             <li><a href="../department/list.html">Departamenty</a>
             <li><a href="../employment/list.html">Zatrudnienie</a>
         </ul>
-
     </nav>
 </header>
-    <h2>
-        Lista pracownikow
-    </h2>
     <main>
-        <table class="table-list" >
+        <h2>Zatrudnienia</h2>
+          <table class="table-list" >
             <thead>
             <tr>
-                <th>Imie</th>
-                <th>Nazwisko</th>
-                <th>E-mail</th>
+                <th>Pracownik</th>
+                <th>Departament</th>
                 <th>Akcje</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td>Ola</td>
-                <td>Kowalska</td>
-                <td>ola.kowalska@pjwstk.edu.pl</td>
+                <td>Ola Kowalska</td>
+                <td>HR</td>
                 <td>
                     <ul class="list-actions">
                         <li>
-                            <a href="../employment/list.html" class="list-actions-button-details">Szczegóły</a>
+                            <a href="list-details.html" class="list-actions-button-details">Szczegóły</a>
                         </li>
                         <li>
                             <a href="form-edit.html"
                                class="list-actions-button-edit">Edytuj</a>
                         </li>
                         <li>
-                            <a href="form-delete.html" class="list-actions-button-delete">Usuń</a>
+                            <a href="" class="list-actions-button-delete">Usuń</a>
                         </li>
                     </ul>
             </tr>
             <tr>
-                <td>Kasia</td>
-                <td>Borys</td>
-                <td>kasia.borys@pjwstk.edu.pl</td>
+                <td>Kasia Borys</td>
+                <td>AUC</td>
                 <td>
 
                     <ul class="list-actions">
                         <li>
-                            <a href="../employment/list.html" class="list-actions-button-details">Szczegóły</a>
+                            <a href="list-details.html" class="list-actions-button-details">Szczegóły</a>
 
                         </li>
                         <li>
@@ -68,16 +60,15 @@
                                class="list-actions-button-edit">Edytuj</a>
                         </li>
                         <li>
-                            <a href="form-delete.html" class="list-actions-button-delete">Usuń</a>
+                            <a href="" class="list-actions-button-delete">Usuń</a>
                         </li>
                     </ul>
             </tr>
             </tbody>
-        </table>
-
+          </table>
         <p>
-            <a href="form.html" class="button-add">Dodaj nowego
-                pracownika</a>
+            <a href="../../index.ejs" class="form-button-submit">Powrót</a>
+            <a href="form.html" class="button-add">Dodaj nowe zatrudnienie</a>
         </p>
     </main>
     <footer>
@@ -85,9 +76,6 @@
     </footer>
 
 </body>
-<script >
-window.setMobileTable("table")
-</script>
 </html>
 
 

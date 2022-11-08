@@ -2,57 +2,70 @@
 <html lang="pl-PL">
 <head>
     <meta charset="UTF-8">
-    <title>Lista wiele-do-wielu</title>
-    <link rel="stylesheet" href="../../css/style.css"/>
+    <title>Demo Test</title>
+    <link rel="stylesheet" href="../../../public/css/style.css"/>
+    <script src="../../../public/js/responsibleTable.js"></script>
 </head>
 <body>
-    <h1>HR Department</h1>
-    <header>
+<h1>
+    System do zarządzania pracownikami
+</h1>
+
+<header>
+
     <nav>
         <ul>
-            <li><a href="../../index.html">Strona glowna</a>
-            <li><a href="../employee/list.html">Pracownicy</a>
-            <li><a href="../department/list.html">Departamenty</a>
+            <li><a href="../../index.ejs">Strona glowna</a>
+            <li><a href="../employee/list.ejs">Pracownicy</a>
+            <li><a href="list.html">Departamenty</a>
             <li><a href="../employment/list.html">Zatrudnienie</a>
+
         </ul>
+
     </nav>
 </header>
+    <h2>
+        Lista departamentów
+    </h2>
     <main>
-        <h2>Zatrudnienia</h2>
-          <table class="table-list" >
+
+
+        <table class="table-list">
             <thead>
             <tr>
-                <th>Pracownik</th>
-                <th>Departament</th>
+                <th>Nazwa</th>
+                <th>Budżet</th>
                 <th>Akcje</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td>Ola Kowalska</td>
                 <td>HR</td>
+                <td>234000 tys</td>
                 <td>
                     <ul class="list-actions">
                         <li>
-                            <a href="list-details.html" class="list-actions-button-details">Szczegóły</a>
+                            <a href="../employment/list.html"
+                               class="list-actions-button-details">Szczegóły</a>
                         </li>
                         <li>
                             <a href="form-edit.html"
                                class="list-actions-button-edit">Edytuj</a>
                         </li>
                         <li>
-                            <a href="" class="list-actions-button-delete">Usuń</a>
+                            <a href="form-delete.html" class="list-actions-button-delete">Usuń</a>
                         </li>
                     </ul>
             </tr>
             <tr>
-                <td>Kasia Borys</td>
                 <td>AUC</td>
+                <td>1236000 tys</td>
                 <td>
 
                     <ul class="list-actions">
                         <li>
-                            <a href="list-details.html" class="list-actions-button-details">Szczegóły</a>
+                            <a href="../employment/list.html"
+                               class="list-actions-button-details">Szczegóły</a>
 
                         </li>
                         <li>
@@ -60,22 +73,28 @@
                                class="list-actions-button-edit">Edytuj</a>
                         </li>
                         <li>
-                            <a href="" class="list-actions-button-delete">Usuń</a>
+                            <a href="form-delete.html" class="list-actions-button-delete">Usuń</a>
                         </li>
                     </ul>
             </tr>
             </tbody>
-          </table>
+        </table>
+
         <p>
-            <a href="../../index.html" class="form-button-submit">Powrót</a>
-            <a href="form.html" class="button-add">Dodaj nowe zatrudnienie</a>
+            <a href="form.html" class="button-add">Dodaj nowy
+                departament</a>
         </p>
     </main>
     <footer>
         Aleksandra Tomasiewicz s20777
     </footer>
 
+
+
 </body>
+<script >
+window.setMobileTable("table")
+</script>
 </html>
 
 

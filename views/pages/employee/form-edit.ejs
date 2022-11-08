@@ -6,15 +6,16 @@
     </h1>
     <meta charset="UTF-8">
     <title>Demo Test</title>
-    <link rel="stylesheet" href="../../css/style.css"/>
-
+    <link rel="stylesheet" href="../../../public/css/style.css"/>
+    <script src="../../../public/js/validationCommon.js"></script>
+    <script src="../../../public/js/validationEmpForm.js"></script>
 </head>
 <body>
 <header>
     <nav>
         <ul>
-            <li><a href="../../index.html">Strona glowna</a>
-            <li><a href="../employee/list.html">Pracownicy</a>
+            <li><a href="../../index.ejs">Strona glowna</a>
+            <li><a href="list.ejs">Pracownicy</a>
             <li><a href="../department/list.html">Departamenty</a>
             <li><a href="../employment/list.html">Zatrudnienie</a>
         </ul>
@@ -23,35 +24,24 @@
 
     <main>
         <h2>
-            Edycja zatrudnienia
+            Edycja pracownik
         </h2>
         <form class="form">
             <label for="firstName">Imię: <span class="symbol-required">*</span></label>
-            <input type="text" name="firstName" id="firstName" value="Ola" disabled/>
+            <input type="text" id="firstName"  value="Ola" disabled/>
             <span id="errorFirstName"></span>
 
             <label for="lastName">Nazwisko: <span class="symbol-required">*</span></label>
-            <input type="text" name="lastName" id="lastName"value="Kowalska" disabled/>
+            <input type="text" id="lastName" value="Kowalska" disabled/>
             <span id="errorlastName"></span>
 
-
             <label for="email">Email: <span class="symbol-required">*</span></label>
-            <input type="text" name="email" id="email" value="ola.kowalska@pjwstk.edu.pl" disabled/>
+            <input type="text" id="email" value="ola.kowalska@pjwstk.edu.pl" disabled/>
             <span id="erroremail"></span>
-
-
-            <label for="deptName">Nazwa: <span class="symbol-required">*</span></label>
-            <input type="text" name="deptName" id="deptName" value="HR" disabled/>
-            <span id="errorDeptName"></span>
-
-
-            <label for="budget">Budżet: <span class="symbol-required">*</span></label>
-            <input type="text" name="budget" id="budget" value="Ola" disabled/>
-            <span id="errorBudget"></span>
 
             <div class="form-buttons">
                 <input type="submit" value="Dodaj" class="form-button-submit"/>
-                <a href="list.html" class="form-button-cancel">Anuluj</a>
+                <a href="list.ejs" class="form-button-cancel">Anuluj</a>
             </div>
 
         </form>
