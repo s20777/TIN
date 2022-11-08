@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo Test</title>
+    <link rel="stylesheet" href="../../css/style.css"/>
+    <script src="../../js/responsibleTable.js"></script>
+</head>
+<body>
+<h1>System do zarządzania pracownikami</h1>
+<header>
+
+    <nav>
+        <ul>
+            <li><a href="../../index.html">Strona glowna</a>
+            <li><a href="../employee/list.html">Pracownicy</a>
+            <li><a href="../department/list.html">Departamenty</a>
+            <li><a href="../employment/list.html">Zatrudnienie</a>
+        </ul>
+
+    </nav>
+</header>
+    <h2>
+        Lista pracownikow
+    </h2>
+    <main>
+        <table class="table-list" >
+            <thead>
+            <tr>
+                <th>Imie</th>
+                <th>Nazwisko</th>
+                <th>E-mail</th>
+                <th>Akcje</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Ola</td>
+                <td>Kowalska</td>
+                <td>ola.kowalska@pjwstk.edu.pl</td>
+                <td>
+                    <ul class="list-actions">
+                        <li>
+                            <a href="../employment/list.html" class="list-actions-button-details">Szczegóły</a>
+                        </li>
+                        <li>
+                            <a href="form-edit.html"
+                               class="list-actions-button-edit">Edytuj</a>
+                        </li>
+                        <li>
+                            <a href="form-delete.html" class="list-actions-button-delete">Usuń</a>
+                        </li>
+                    </ul>
+            </tr>
+            <tr>
+                <td>Kasia</td>
+                <td>Borys</td>
+                <td>kasia.borys@pjwstk.edu.pl</td>
+                <td>
+
+                    <ul class="list-actions">
+                        <li>
+                            <a href="../employment/list.html" class="list-actions-button-details">Szczegóły</a>
+
+                        </li>
+                        <li>
+                            <a href="form-edit.html"
+                               class="list-actions-button-edit">Edytuj</a>
+                        </li>
+                        <li>
+                            <a href="form-delete.html" class="list-actions-button-delete">Usuń</a>
+                        </li>
+                    </ul>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>
+            <a href="form.html" class="button-add">Dodaj nowego
+                pracownika</a>
+        </p>
+    </main>
+    <footer>
+        Aleksandra Tomasiewicz s20777
+    </footer>
+
+</body>
+<script >
+window.setMobileTable("table")
+</script>
+</html>
+
+

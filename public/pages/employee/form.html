@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <h1>
+        System do zarządzania pracownikami
+    </h1>
+    <meta charset="UTF-8">
+    <title>Demo Test</title>
+    <link rel="stylesheet" href="../../css/style.css"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <script src="./../../js/validationCommon.js"></script>
+    <script src="./../../js/validationEmpForm.js"></script>
+</head>
+<body>
+<header>
+
+    <img src="images/logo.png" alt="Demo Test">
+
+    <nav>
+        <ul>
+            <li><a href="../../index.html">Strona glowna</a>
+            <li><a href="../employee/list.html">Pracownicy</a>
+            <li><a href="../department/list.html">Departamenty</a>
+            <li><a href="../employment/list.html">Zatrudnienie</a>
+        </ul>
+    </nav>
+</header>
+<main>
+
+
+    <h2>
+        Nowy pracownik
+    </h2>
+    <form class="form" novalidate onsubmit="validateForm(event);">
+        <label for="firstName">Imię: <span class="symbol-required">*</span></label>
+        <input type="text" name="firstName" id="firstName" placeholder="2-60 znaków"/>
+        <span id="errorFirstName"></span>
+
+        <label for="lastName">Nazwisko: <span class="symbol-required">*</span></label>
+        <input type="text" name="lastName" id="lastName" placeholder="2-60 znaków" required/>
+        <span id="errorlastName"></span>
+
+        <label for="email">Email: <span class="symbol-required">*</span></label>
+        <input type="text" name="email" id="email" placeholder="2-60 znaków" required/>
+        <span id="erroremail"></span>
+
+        <span id="errorsSummary"></span>
+
+        <div class="form-buttons">
+
+            <input type="submit" value="Dodaj" class="form-button-submit"/>
+            <a href="./list.html" class="form-button-cancel">Anuluj</a>
+        </div>
+
+
+    </form>
+
+</main>
+<footer>
+    Aleksandra Tomasiewicz s20777
+</footer>
+
+
+</body>
+</html>
+
+

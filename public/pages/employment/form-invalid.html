@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo Test</title>
+    <link rel="stylesheet" href="../../css/style.css"/>
+
+</head>
+<body>
+<header>
+
+    <img src="images/logo.png" alt="Demo Test">
+
+    <nav>
+        <ul>
+            <li><a href="../../index.html">Strona glowna</a>
+            <li><a href="../employee/list.html">Pracownicy</a>
+            <li><a href="../department/list.html">Departamenty</a>
+            <li><a href="../employment/list.html">Zatrudnienie</a>
+        </ul>
+    </nav>
+    </header>
+    <main>
+        <h2>
+            Nowy pracownik
+        </h2>
+        <form>
+            <label for="firstName" class="color-label">Imię: *</label>
+            <input type="text" name="firstName" id="firstName" required/>
+            <span id="errorfirstName" class="errors-text">Pole jest wymagane</span>
+
+            <label for="lastName" class="color-label">Nazwisko: *</label>
+            <input type="text" name="lastName" id="lastName" required/>
+            <span id="errorlastName" class="errors-text">Pole jest wymagane</span>
+
+            <label for="email" class="color-label">Email: *</label>
+            <input type="text" name="email" id="email" required/>
+            <span id="erroremail" class="errors-text">Pole jest wymagane</span>
+
+            <div>
+                <p id="errorSummary" class="errors-text">Formularz zawiera błędy</p>
+                <input type="submit" value="Dodaj"class="form-button-submit"/>
+                <a href="list.html"class="form-button-cancel">Anuluj</a>
+            </div>
+
+        </form>
+
+    </main>
+    <footer>
+        Aleksandra Tomasiewicz s20777
+    </footer>
+
+
+
+</body>
+</html>

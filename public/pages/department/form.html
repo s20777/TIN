@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <h1>
+        HR Department
+    </h1>
+    <meta charset="UTF-8">
+    <title>Demo Test</title>
+    <link rel="stylesheet" href="../../css/style.css"/>
+    <script src="./../../js/validationCommon.js"></script>
+    <script src="./../../js/validationDeptForm.js"></script>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="../../index.html">Strona glowna</a>
+            <li><a href="../employee/list.html">Pracownicy</a>
+            <li><a href="list.html">Departamenty</a>
+        </ul>
+    </nav>
+    </header>
+    <main>
+        <h2>
+            Nowy departament
+        </h2>
+        <form class="form" novalidate onsubmit="validateForm(event);">
+            <label for="deptName">Nazwa: <span class="symbol-required">*</span></label>
+            <input type="text" name="deptName" id="deptName" required/>
+            <span id="errorDeptName"></span>
+
+            <label for="budget">Budżet: <span class="symbol-required">*</span></label>
+            <input type="text" name="budget" id="budget" required/>
+            <span id="errorBudget"></span>
+
+            <span id="errorsSummary"></span>
+
+            <div class="form-buttons">
+                <span id="errorEmail"></span>
+                <input type="submit" value="Dodaj" class="form-button-submit"/>
+                <a href="list.html" class="form-button-cancel">Anuluj</a>
+            </div>
+        </form>
+    </main>
+    <footer>
+        Aleksandra Tomasiewicz s20777
+    </footer>
+
+</body>
+</html>
+
+
