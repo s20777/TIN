@@ -3,7 +3,15 @@ exports.showDepartmentList = (req, res, next) => {
 }
 
 exports.showDepartmentForm = (req, res, next) => {
-    res.render('pages/department/form');
+    res.render('pages/department/form', {
+        navLocation: 'dept',
+        user: {},
+        pageTitle: 'Nowy departament',
+        formMode: 'createNew',
+        btnLabel: 'Dodaj departament',
+        formAction: '/dept/add',
+        validationErrors: []
+    });
 }
 
 exports.showDepartmentDetails = (req, res, next) => {

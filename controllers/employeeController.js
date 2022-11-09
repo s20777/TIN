@@ -6,9 +6,9 @@ exports.showEmployeeForm = (req, res, next) => {
     res.render('pages/employee/form', {
         navLocation: 'emp',
         user: {},
-        pageTitle: 'Nowy użytkownik',
+        pageTitle: 'Nowy pracownik',
         formMode: 'createNew',
-        btnLabel: 'Dodaj użytkownika',
+        btnLabel: 'Dodaj pracownika',
         formAction: '/emp/add',
         validationErrors: []
     });
