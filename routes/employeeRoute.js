@@ -2,8 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 
-const employeeControler = require('../controllers/employeeController');
+const employeeController = require('../controllers/employeeController');
 
-router.get('/', employeeControler.showEmployeeList)
+router.get('/', employeeController.showEmployeeList);
+router.get('/add', employeeController.showEmployeeForm);
+router.get('/details/:empId', employeeController.showEmployeeDetails);
+
 
 module.exports = router;

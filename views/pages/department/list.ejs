@@ -1,26 +1,26 @@
 <%- include('../../fragments/header.ejs') %>
 <main>
         <h2>
-            Lista pracownikow
+            Lista departamentów
         </h2>
-        <table class="table-list" >
+
+        <table class="table-list">
             <thead>
             <tr>
-                <th>Imie</th>
-                <th>Nazwisko</th>
-                <th>E-mail</th>
+                <th>Nazwa</th>
+                <th>Budżet</th>
                 <th>Akcje</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td>Ola</td>
-                <td>Kowalska</td>
-                <td>ola.kowalska@pjwstk.edu.pl</td>
+                <td>HR</td>
+                <td>234000 tys</td>
                 <td>
                     <ul class="list-actions">
                         <li>
-                            <a href="../employment/list.ejs" class="list-actions-button-details">Szczegóły</a>
+                            <a href="../employment/list.ejs"
+                               class="list-actions-button-details">Szczegóły</a>
                         </li>
                         <li>
                             <a href="form-edit.ejs"
@@ -32,14 +32,14 @@
                     </ul>
             </tr>
             <tr>
-                <td>Kasia</td>
-                <td>Borys</td>
-                <td>kasia.borys@pjwstk.edu.pl</td>
+                <td>AUC</td>
+                <td>1236000 tys</td>
                 <td>
 
                     <ul class="list-actions">
                         <li>
-                            <a href="../employment/list.ejs" class="list-actions-button-details">Szczegóły</a>
+                            <a href="../employment/list.ejs"
+                               class="list-actions-button-details">Szczegóły</a>
 
                         </li>
                         <li>
@@ -55,13 +55,15 @@
         </table>
 
         <p>
-            <a href="form.ejs" class="button-add">Dodaj nowego
-                pracownika</a>
+            <a href="form.ejs" class="button-add">Dodaj nowy
+                departament</a>
         </p>
     </main>
     <footer>
         Aleksandra Tomasiewicz s20777
     </footer>
+
+
 
 </body>
 <script >

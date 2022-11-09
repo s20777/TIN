@@ -15,8 +15,9 @@
 </header>
 <nav>
     <ul>
-        <li><a href="pages/employee/list.ejs" class="active">Pracownicy</a>
-        <li><a href="pages/department/list.html">Departamenty</a>
-        <li><a href="pages/employment/list.html">Zatrudnienia</a>
+        <li><a href="/" class="<%= navLocation == 'main' ? 'active' : '' %>">Strona główna</a></li>
+        <li><a href="/employees" class="<%= navLocation == 'emp' ? 'active' : '' %>">Pracownicy</a>
+        <li><a href="/departments" class="<%= navLocation == 'dept' ? 'active' : '' %>">Departamenty</a>
+        <li><a href="/employments" class="<%= navLocation == 'employment' ? 'active' : '' %>">Zatrudnienia</a>
     </ul>
 </nav>

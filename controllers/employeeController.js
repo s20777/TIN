@@ -1,5 +1,5 @@
 exports.showEmployeeList = (req, res, next) => {
-    res.render('pages/employee/list', {});
+    res.render('pages/employee/list', {navLocation : "emp"});
 }
 
 exports.showEmployeeForm = (req, res, next) => {
