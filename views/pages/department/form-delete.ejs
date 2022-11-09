@@ -1,73 +1,53 @@
-<!DOCTYPE html>
-<html lang="pl-PL">
-<head>
-    <meta charset="UTF-8">
-    <title>Demo Test</title>
-    <link rel="stylesheet" href="../../../public/css/style.css"/>
-</head>
-<body>
-<h1>
-    System do zarządzania pracownikami
-</h1>
+<%- include('../../fragments/header.ejs') %>
 
-<header>
 
-    <nav>
-        <ul>
-            <li><a href="../../index.ejs">Strona glowna</a>
-            <li><a href="../employee/list.ejs">Pracownicy</a>
-            <li><a href="list.ejs">Departamenty</a>
-            <li><a href="../employment/list.ejs">Zatrudnienie</a>
-        </ul>
-
-    </nav>
+<main>
     <h2>
         Lista departamentów
     </h2>
-    <main>
 
 
-        <table class="table-list">
-            <thead>
-            <tr>
-                <th>Nazwa</th>
-                <th>Budżet</th>
-                <th>Akcje</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>HR</td>
-                <td>234000 tys</td>
-                <td>
-                    <ul class="list-actions">
-                        <li>
-                            <a href="" class="list-actions-button-delete">Usuń</a>
-                        </li>
-                    </ul>
-            </tr>
-            <tr>
-                <td>AUC</td>
-                <td>1236000 tys</td>
-                <td>
+    <table class="table-list">
+        <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Budżet</th>
+            <th>Akcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>HR</td>
+            <td>234000 tys</td>
+            <td>
+                <ul class="list-actions">
+                    <li>
+                        <a href="" class="list-actions-button-delete">Usuń</a>
+                    </li>
+                </ul>
+        </tr>
+        <tr>
+            <td>AUC</td>
+            <td>1236000 tys</td>
+            <td>
 
-                    <ul class="list-actions">
-                        <li>
-                            <a href="" class="list-actions-button-delete">Usuń</a>
-                        </li>
-                    </ul>
-            </tr>
-            </tbody>
-        </table>
+                <ul class="list-actions">
+                    <li>
+                        <a href="" class="list-actions-button-delete">Usuń</a>
+                    </li>
+                </ul>
+        </tr>
+        </tbody>
+    </table>
 
-        <p>
-            <a href="form.ejs" class="button-add">Dodaj nowy
-                departament</a>
-        </p>
-    </main>
-    <footer>
-        Aleksandra Tomasiewicz s20777
-    </footer>
+    <p>
+        <a href="form.ejs" class="button-add">Dodaj nowy
+            departament</a>
+    </p>
+</main>
+<footer>
+    Aleksandra Tomasiewicz s20777
+</footer>
 
 </header>
 

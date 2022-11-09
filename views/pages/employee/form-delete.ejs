@@ -1,28 +1,10 @@
-<!DOCTYPE html>
-<html lang="pl-PL">
-<head>
-    <meta charset="UTF-8">
-    <title>Demo Test</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-<h1>
-    HR Department
-</h1>
+<%- include('../../fragments/header.ejs') %>
 
-<header>
-    <nav>
-        <ul>
-            <li><a href="../../index.ejs">Strona glowna</a>
-            <li><a href="list.ejs">Pracownicy</a>
-            <li><a href="../department/list.ejs">Departamenty</a>
-            <li><a href="../employment/list.ejs">Zatrudnienie</a>
-        </ul>
-    </nav>
-    <h2>
-        Lista pracownikow
-    </h2>
-    <main>
+
+<main>
+        <h2>
+            Lista pracownikow
+        </h2>
         <table class="table-list">
             <thead>
             <tr>

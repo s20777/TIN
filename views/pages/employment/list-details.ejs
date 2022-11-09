@@ -1,22 +1,5 @@
-<!DOCTYPE html>
-<html lang="pl-PL">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista wiele-do-wielu</title>
-    <link rel="stylesheet" href="../../../public/css/style.css"/>
-</head>
-<body>
-<h1>HR Department</h1>
-<header>
-    <nav>
-        <ul>
-            <li><a href="../../index.ejs">Strona glowna</a>
-            <li><a href="../employee/list.ejs">Pracownicy</a>
-            <li><a href="../department/list.ejs">Departamenty</a>
-            <li><a href="list.ejs">Zatrudnienie</a>
-        </ul>
-    </nav>
-</header>
+<%- include('../../fragments/header.ejs') %>
+
 <main>
     <h2>Szczegóły zatrudnienia</h2>
     <form class="form">
