@@ -13,51 +13,52 @@
 <%- include('../../fragments/header.ejs') %>
 
 <main>
-        <h2>
-            Nowy pracownik
-        </h2>
-        <form class="form" novalidate onsubmit="validateForm(event);">
-            <label for="firstName">Imię: <span class="symbol-required">*</span></label>
-            <input type="text" name="firstName" id="firstName" placeholder="2-60 znaków" required/>
-            <span id="errorFirstName"></span>
+    <h2>
+        Nowe zatrudnienie
+    </h2>
+    <form class="form" novalidate onsubmit="validateForm(event);">
+        <label for="firstName">Imię: <span class="symbol-required">*</span></label>
+        <input type="text" name="firstName" id="firstName" placeholder="2-60 znaków" required/>
+        <span id="errorFirstName"></span>
 
-            <label for="lastName">Nazwisko: <span class="symbol-required">*</span></label>
-            <input type="text" name="lastName" id="lastName" placeholder="2-60 znaków" required/>
-            <span id="errorlastName"></span>
-
-
-            <label for="email">Email: <span class="symbol-required">*</span></label>
-            <input type="text" name="email" id="email" placeholder="2-60 znaków" required/>
-            <span id="erroremail"></span>
+        <label for="lastName">Nazwisko: <span class="symbol-required">*</span></label>
+        <input type="text" name="lastName" id="lastName" placeholder="2-60 znaków" required/>
+        <span id="errorlastName"></span>
 
 
-            <label for="deptName">Nazwa: <span class="symbol-required">*</span></label>
-            <input type="text" name="deptName" id="deptName" placeholder="2-60 znaków" required/>
-            <span id="errorDeptName"></span>
+        <label for="email">Email: <span class="symbol-required">*</span></label>
+        <input type="text" name="email" id="email" placeholder="2-60 znaków" required/>
+        <span id="erroremail"></span>
 
 
-            <label for="budget">Budżet: <span class="symbol-required">*</span></label>
-            <input type="text" name="budget" id="budget" placeholder="2-60 znaków" required/>
-            <span id="errorBudget"></span>
+        <label for="deptName">Nazwa departamentu: <span class="symbol-required">*</span></label>
+        <input type="text" name="deptName" id="deptName" placeholder="2-60 znaków" required/>
+        <span id="errorDeptName"></span>
+
+        <label for="Start">Start:<span class="symbol-required">*</span></label>
+        <input type="Date" id="Start" id="startDate" placeholder="2-60 znaków" required/>
+        <span id="errorStart"></span>
+
+        <label for="Finish">Koniec: <span class="symbol-required">*</span></label>
+        <input type="Date" id="Finish" id="finishDate" placeholder="2-60 znaków" required/>
+        <span id="errorFinish"></span>
 
 
-            <span id="errorsSummary"></span>
+        <span id="errorsSummary"></span>
 
-            <div class="form-buttons">
-                <span id="errorEmail"></span>
-                <input type="submit" value="Dodaj" class="form-button-submit"/>
-                <a href="list.ejs" class="form-button-cancel">Anuluj</a>
-            </div>
+        <div class="form-buttons">
+            <span id="errorEmail"></span>
+            <input type="submit" value="Dodaj" class="form-button-submit"/>
+            <a href="/departments" class="form-button-cancel">Anuluj</a>
+        </div>
 
-        </form>
+    </form>
 
 
-
-    </main>
-    <footer>
-        Aleksandra Tomasiewicz s20777
-    </footer>
-
+</main>
+<footer>
+    Aleksandra Tomasiewicz s20777
+</footer>
 
 
 </body>

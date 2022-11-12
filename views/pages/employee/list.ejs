@@ -1,71 +1,71 @@
 <%- include('../../fragments/header.ejs') %>
 <main>
-        <h2>
-            Lista pracownikow
-        </h2>
-        <table class="table-list" >
-            <thead>
-            <tr>
-                <th>Imie</th>
-                <th>Nazwisko</th>
-                <th>E-mail</th>
-                <th>Akcje</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Ola</td>
-                <td>Kowalska</td>
-                <td>ola.kowalska@pjwstk.edu.pl</td>
-                <td>
-                    <ul class="list-actions">
-                        <li>
-                            <a href="/employments" class="list-actions-button-details">Szczegóły</a>
-                        </li>
-                        <li>
-                            <a href="/employments/edit/:empId"
-                               class="list-actions-button-edit">Edytuj</a>
-                        </li>
-                        <li>
-                            <a href="form-delete.ejs" class="list-actions-button-delete">Usuń</a>
-                        </li>
-                    </ul>
-            </tr>
-            <tr>
-                <td>Kasia</td>
-                <td>Borys</td>
-                <td>kasia.borys@pjwstk.edu.pl</td>
-                <td>
+    <h2>
+        Lista pracownikow
+    </h2>
+    <table class="table-list">
+        <thead>
+        <tr>
+            <th>Imie</th>
+            <th>Nazwisko</th>
+            <th>E-mail</th>
+            <th>Akcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Ola</td>
+            <td>Kowalska</td>
+            <td>ola.kowalska@pjwstk.edu.pl</td>
+            <td>
+                <ul class="list-actions">
+                    <li>
+                        <a href="/employees/details/:empId" class="list-actions-button-details">Szczegóły</a>
+                    </li>
+                    <li>
+                        <a href="/employees/edit/:empId"
+                           class="list-actions-button-edit">Edytuj</a>
+                    </li>
+                    <li>
+                        <a class="list-actions-button-delete">Usuń</a>
+                    </li>
+                </ul>
+        </tr>
+        <tr>
+            <td>Kasia</td>
+            <td>Borys</td>
+            <td>kasia.borys@pjwstk.edu.pl</td>
+            <td>
 
-                    <ul class="list-actions">
-                        <li>
-                            <a href="/employments" class="list-actions-button-details">Szczegóły</a>
+                <ul class="list-actions">
+                    <li>
+                        <a href="/employees/details/:empId" class="list-actions-button-details">Szczegóły</a>
 
-                        </li>
-                        <li>
-                            <a href="form-edit.ejs"
-                               class="list-actions-button-edit">Edytuj</a>
-                        </li>
-                        <li>
-                            <a href="form-delete.ejs" class="list-actions-button-delete">Usuń</a>
-                        </li>
-                    </ul>
-            </tr>
-            </tbody>
-        </table>
+                    </li>
+                    <li>
+                        <a href="/employees/edit/:empId"
+                           class="list-actions-button-edit">Edytuj</a>
+                    </li>
+                    <li>
+                        <a class="list-actions-button-delete">Usuń</a>
+                    </li>
+                </ul>
+        </tr>
+        </tbody>
+    </table>
 
-        <p>
-            <a href="/employees/add" class="button-add">Dodaj nowego pracownika</a>
+    <p>
+        <a href="/employees/add" class="button-add">Dodaj nowego pracownika</a>
 
     </p>
-    </main>
-    <footer>
-        Aleksandra Tomasiewicz s20777
-    </footer>
+</main>
+<footer>
+    Aleksandra Tomasiewicz s20777
+</footer>
 
 </body>
-<script >
-window.setMobileTable("table")
+<script>
+    window.setMobileTable("table")
 </script>
 </html>
 

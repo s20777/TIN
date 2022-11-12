@@ -15,7 +15,10 @@ exports.showEmploymentForm = (req, res, next) => {
 }
 
 exports.showEmploymentDetails = (req, res, next) => {
-    res.render('pages/employment/list-details', {});
+    res.render('pages/employment/details', {navLocation : 'employment'});
 }
 
+exports.showEmploymentEdit = (req, res, next) => {
+    res.render('pages/employment/form-edit', {navLocation : "employment"});
+}
 

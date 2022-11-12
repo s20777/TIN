@@ -15,5 +15,9 @@ exports.showDepartmentForm = (req, res, next) => {
 }
 
 exports.showDepartmentDetails = (req, res, next) => {
-    res.render('pages/employment/list', {});
+    res.render('pages/department/details', {navLocation : "dept"});
+}
+
+exports.showDepartmentEdit = (req, res, next) => {
+    res.render('pages/department/form-edit', {navLocation : "dept"});
 }

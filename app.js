@@ -53,4 +53,15 @@ app.listen(PORT, HOST, () => {
   console.log(`Running on http://${HOST}:${PORT}`);
 });
 
+
+//db
+const sequelizeInit = require('./config/sequelize/init');
+sequelizeInit()
+    .catch(err => {
+      console.log(err);
+    });
+
+const empApiRouter = require('./routes/api/employeeApiRoute');
+app.use('/api/employees', empApiRouter);
+
 module.exports = app;
