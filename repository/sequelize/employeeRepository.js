@@ -1,6 +1,7 @@
 const Employee = require("../../model/sequelize/employee");
 const Employment = require("../../model/sequelize/employment");
 const Department = require("../../model/sequelize/department");
+const {where} = require("sequelize");
 
 exports.getEmployees = () => {
     return Employee.findAll();

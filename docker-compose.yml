@@ -20,6 +20,7 @@ services:
       MYSQL_DATABASE: default_schema
     volumes:
       - "mysqldata:/var/lib/mysql"
+      - "$PWD/config/sequelize/initdb:/docker-entrypoint-initdb.d"
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -33,6 +34,15 @@ services:
     restart: always
     ports:
       - 8183:80
+
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    restart: on-failure
+
 volumes:
   mongodata:
   mysqldata:
