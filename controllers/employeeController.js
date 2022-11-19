@@ -1,5 +1,14 @@
+const EmployeeRepository = require('../repository/sequelize/employeeRepository')
+
+
 exports.showEmployeeList = (req, res, next) => {
-    res.render('pages/employee/list', {navLocation : "emp"});
+    EmployeeRepository.getEmployees()
+        .then(emps => {
+            res.render('pages/employee/list', {
+                emps: emps,
+                navLocation: "emp"});
+        })
+
 }
 
 exports.showEmployeeForm = (req, res, next) => {
@@ -15,9 +24,9 @@ exports.showEmployeeForm = (req, res, next) => {
 }
 
 exports.showEmployeeDetails = (req, res, next) => {
-    res.render('pages/employee/details',{ navLocation : "emp"});
+    res.render('pages/employee/details', {navLocation: "emp"});
 }
 
 exports.showEmployeeEdit = (req, res, next) => {
-    res.render('pages/employee/form-edit', {navLocation : "emp"});
+    res.render('pages/employee/form-edit', {navLocation: "emp"});
 }

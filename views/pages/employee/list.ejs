@@ -12,45 +12,34 @@
             <th>Akcje</th>
         </tr>
         </thead>
+
         <tbody>
+
+        <% for (let emp of emps) { %>
+
         <tr>
-            <td>Ola</td>
-            <td>Kowalska</td>
-            <td>ola.kowalska@pjwstk.edu.pl</td>
+
+            <td><%= emp.firstName %></td>
+            <td><%= emp.lastName %></td>
+            <td><%= emp.email %></td>
+
             <td>
                 <ul class="list-actions">
                     <li>
-                        <a href="/employees/details/:empId" class="list-actions-button-details">Szczegóły</a>
+                        <a href="/employees/details/<%=emp._id%>" class="list-actions-button-details">Szczegóły</a>
                     </li>
                     <li>
-                        <a href="/employees/edit/:empId"
-                           class="list-actions-button-edit">Edytuj</a>
+                        <a href="/employees/edit/<%=emp._id%>" class="list-actions-button-edit">Edytuj</a>
                     </li>
                     <li>
                         <a class="list-actions-button-delete">Usuń</a>
                     </li>
                 </ul>
+            </td>
         </tr>
-        <tr>
-            <td>Kasia</td>
-            <td>Borys</td>
-            <td>kasia.borys@pjwstk.edu.pl</td>
-            <td>
+        <% } %>
 
-                <ul class="list-actions">
-                    <li>
-                        <a href="/employees/details/:empId" class="list-actions-button-details">Szczegóły</a>
 
-                    </li>
-                    <li>
-                        <a href="/employees/edit/:empId"
-                           class="list-actions-button-edit">Edytuj</a>
-                    </li>
-                    <li>
-                        <a class="list-actions-button-delete">Usuń</a>
-                    </li>
-                </ul>
-        </tr>
         </tbody>
     </table>
 
