@@ -11,22 +11,47 @@ exports.showEmployeeList = (req, res, next) => {
 
 }
 
-exports.showEmployeeForm = (req, res, next) => {
+exports.showEmployeeFormNew = (req, res, next) => {
     res.render('pages/employee/form', {
         navLocation: 'emp',
-        user: {},
+        emp: {},
         pageTitle: 'Nowy pracownik',
         formMode: 'createNew',
         btnLabel: 'Dodaj pracownika',
-        formAction: '/emp/add',
+        formAction: '/employees/add',
         validationErrors: []
     });
 }
 
-exports.showEmployeeDetails = (req, res, next) => {
-    res.render('pages/employee/details', {navLocation: "emp"});
+exports.showEmployeeEdit = (req, res, next) => {
+    const empId = req.params.empId;
+
+    EmployeeRepository.getEmployeeById(empId)
+        .then(emp => {
+            res.render('pages/employee/form-edit', {
+                emp: emp,
+                formMode: 'edit',
+                pageTitle: 'Edycja pracownik',
+                btnLabel: 'Edytuj pracownika',
+                formAction: '/employees/edit',
+                navLocation: 'emp'
+            })})
 }
 
-exports.showEmployeeEdit = (req, res, next) => {
-    res.render('pages/employee/form-edit', {navLocation: "emp"});
+exports.showEmployeeDetails = (req, res, next) => {
+    const empId = req.params.empId;
+
+    EmployeeRepository.getEmployeeById(empId)
+        .then(emp => {
+            res.render('pages/employee/details', {
+                emp: emp,
+                formMode: 'showDetails',
+                pageTitle: 'Szczegóły pracownik',
+                formAction: '',
+                navLocation: 'emp'
+            })})
 }
+
+// exports.showEmployeeEdit = (req, res, next) => {
+//     res.render('pages/employee/form-edit', {navLocation: "emp"});
+// }
