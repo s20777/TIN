@@ -28,6 +28,9 @@ app.use('/employees', employeeRouter);
 app.use('/employments', employmentRouter);
 app.use('/departments', departmentRouter);
 
+const empApiRouter = require('./routes/api/employeeApiRoute');
+app.use('/api/employees', empApiRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -61,7 +64,6 @@ sequelizeInit()
       console.log(err);
     });
 
-const empApiRouter = require('./routes/api/employeeApiRoute');
-app.use('/api/employees', empApiRouter);
+
 
 module.exports = app;
