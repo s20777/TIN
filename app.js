@@ -42,6 +42,9 @@ app.use('/api/employees', empApiRouter);
 const deptApiRouter = require('./routes/api/departmentApiRoute');
 app.use('/api/departments', deptApiRouter);
 
+const employmentApiRouter = require('./routes/api/employmentApiRoute');
+app.use('/api/employments', employmentApiRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
