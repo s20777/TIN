@@ -28,8 +28,19 @@ app.use('/employees', employeeRouter);
 app.use('/employments', employmentRouter);
 app.use('/departments', departmentRouter);
 
+
+//db
+const sequelizeInit = require('./config/sequelize/init');
+sequelizeInit()
+    .catch(err => {
+        console.log(err);
+    });
+
 const empApiRouter = require('./routes/api/employeeApiRoute');
 app.use('/api/employees', empApiRouter);
+
+const deptApiRouter = require('./routes/api/departmentApiRoute');
+app.use('/api/departments', deptApiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -57,12 +68,7 @@ app.listen(PORT, HOST, () => {
 });
 
 
-//db
-const sequelizeInit = require('./config/sequelize/init');
-sequelizeInit()
-    .catch(err => {
-      console.log(err);
-    });
+
 
 
 

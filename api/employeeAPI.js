@@ -63,7 +63,7 @@ exports.deleteEmployee = (req, res, next) => {
 
     EmployeeRepository.deleteEmployee(empId)
         .then(result => {
-            res.status(200).json({ message: 'Removed employee', book: result });
+            res.status(200).json({ message: 'Removed employee', emp: result });
         })
         .catch(err => {
             if (!err.statusCode) {
