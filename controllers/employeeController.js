@@ -55,3 +55,31 @@ exports.showEmployeeDetails = (req, res, next) => {
 // exports.showEmployeeEdit = (req, res, next) => {
 //     res.render('pages/employee/form-edit', {navLocation: "emp"});
 // }
+
+
+exports.addEmployee = (req, res, next) => {
+    const empData = {...req.body};
+    EmployeeRepository.createEmployee(empData)
+        .then(result => {
+            res.redirect('/employees')
+        })
+};
+
+exports.updateEmployee = (req, res, next) => {
+    const empId = req.body._id;
+    const empData = {...req.body};
+
+    EmployeeRepository.updateEmployee(empId, empData)
+        .then(result => {
+            res.redirect('/employees')
+        })
+
+};
+
+exports.deleteEmployee = (req, res, next) => {
+    const empId = req.body._id;
+    EmployeeRepository.deleteEmployee(empId)
+        .then(result => {
+            res.redirect('/employees')
+        })
+};

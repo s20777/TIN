@@ -36,9 +36,14 @@
                value="<%= emp.email %>" <%= (formMode == 'showDetails' ) ? 'disabled' : '' %>/>
         <span id="erroremail"></span>
 
+        <div class="form-buttons">
+            <input class="form-button-submit" type="submit" />
+            <a href="/employees" class="form-button-cancel">Anuluj</a>
+        </div>
+
         <span id="errorsSummary"></span>
 
-        <% if (formMode == 'showDetails') { %>
+    <% if (formMode == 'showDetails') { %>
             <div class="section-buttons">
                 <a href="/employees/edit/<%= emp._id %>" class="button-edit">Edytuj</a>
             </div>
@@ -81,12 +86,14 @@
             <p id="errorsSummary" class="errors-text"></p>
 
             <% if (formMode != 'showDetails') { %>
-            <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
+            <input class="form-button-submit" type="submit" />
             <a class="form-button-cancel" href="/employees">Anuluj</a>
             <% } else { %>
                 <a class="form-button-cancel" href="/employees">Powrót</a>
             <% } }%>
         </div>
+
+
 
 
 
