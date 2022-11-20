@@ -11,7 +11,7 @@ exports.showEmployeeList = (req, res, next) => {
 
 }
 
-exports.showEmployeeFormNew = (req, res, next) => {
+exports.showAddEmployeeForm = (req, res, next) => {
     res.render('pages/employee/form', {
         navLocation: 'emp',
         emp: {},
@@ -23,12 +23,12 @@ exports.showEmployeeFormNew = (req, res, next) => {
     });
 }
 
-exports.showEmployeeEdit = (req, res, next) => {
+exports.showEditEmployeeForm = (req, res, next) => {
     const empId = req.params.empId;
 
     EmployeeRepository.getEmployeeById(empId)
         .then(emp => {
-            res.render('pages/employee/form-edit', {
+            res.render('pages/employee/form', {
                 emp: emp,
                 formMode: 'edit',
                 pageTitle: 'Edycja pracownik',
@@ -43,7 +43,7 @@ exports.showEmployeeDetails = (req, res, next) => {
 
     EmployeeRepository.getEmployeeById(empId)
         .then(emp => {
-            res.render('pages/employee/details', {
+            res.render('pages/employee/form', {
                 emp: emp,
                 formMode: 'showDetails',
                 pageTitle: 'Szczegóły pracownik',
