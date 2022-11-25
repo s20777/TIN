@@ -5,8 +5,7 @@
     <title>Demo Test</title>
     <link rel="stylesheet" href="/css/style.css">
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <script src="/js/validationCommon.js"></script>
-    <script src="/js/validationEmpForm.js"></script>
+
 </head>
 
 <body>
@@ -14,8 +13,11 @@
 <%- include('../../fragments/header.ejs') %>
 
 <main>
+    <script src="/js/validationCommon.js"></script>
+    <script src="/js/validationEmpForm.js"></script>
+
     <h2>
-        Nowy pracownik
+        Pracownik
     </h2>
     <form class="form" method="post" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
 
@@ -23,38 +25,50 @@
 
         <label for="firstName">Imię: <span class="symbol-required">*</span></label>
         <input type="text" name="firstName" id="firstName" placeholder="2-60 znaków"
-               value="<%= emp.firstName %>" <%= (formMode == 'showDetails' ) ? 'disabled' : '' %> />
+               value="<%= emp.firstName %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
         <span id="errorFirstName"></span>
 
         <label for="lastName">Nazwisko: <span class="symbol-required">*</span></label>
         <input type="text" name="lastName" id="lastName" placeholder="2-60 znaków"
-               value="<%= emp.lastName %>" <%= (formMode == 'showDetails' ) ? 'disabled' : '' %> />
+               value="<%= emp.lastName %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
         <span id="errorlastName"></span>
 
         <label for="email">Email: <span class="symbol-required">*</span></label>
         <input type="text" name="email" id="email" placeholder="2-60 znaków"
-               value="<%= emp.email %>" <%= (formMode == 'showDetails' ) ? 'disabled' : '' %>/>
+               value="<%= emp.email %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
         <span id="erroremail"></span>
 
-        <div class="form-buttons">
-            <input class="form-button-submit" type="submit" />
-            <a href="/employees" class="form-button-cancel">Anuluj</a>
-        </div>
+<!--        <div class="form-buttons">-->
+<!--            <input class="form-button-submit" type="submit"/>-->
+<!--            <a href="/employees" class="form-button-cancel">Anuluj</a>-->
+<!--        </div>-->
 
         <span id="errorsSummary"></span>
 
-    <% if (formMode == 'showDetails') { %>
-            <div class="section-buttons">
-                <a href="/employees/edit/<%= emp._id %>" class="button-edit">Edytuj</a>
+        <% if (formMode == 'showDetails') { %>
+            <div>
+                <a class="list-actions-button-edit" href="/employees/edit/<%= emp._id %>">Edytuj</a>
             </div>
         <% } %>
 
+        <div>
+            <p id="errorsSummary" class="errors-text"></p>
+
+            <% if (formMode != 'showDetails') { %>
+                <input class="form-button-submit" type="submit"/>
+                <a class="form-button-cancel" href="/employees">Anuluj</a>
+            <% } else { %>
+                <a class="form-button-cancel" href="/employees">Powrót</a>
+            <% } %>
+        </div>
+
+
     </form>
 
-        <% if (formMode == 'showDetails' || formMode == 'edit') { %>
-            <h2>
-                Szczegóły pracownika
-            </h2>
+    <% if (formMode == 'showDetails' || formMode == 'edit') { %>
+        <h2>
+            Szczegóły pracownika
+        </h2>
 
         <table class="table-list">
             <thead>
@@ -80,23 +94,7 @@
             <% } %>
             </tbody>
         </table>
-
-
-        <div class="form-buttons">
-            <p id="errorsSummary" class="errors-text"></p>
-
-            <% if (formMode != 'showDetails') { %>
-            <input class="form-button-submit" type="submit" />
-            <a class="form-button-cancel" href="/employees">Anuluj</a>
-            <% } else { %>
-                <a class="form-button-cancel" href="/employees">Powrót</a>
-            <% } }%>
-        </div>
-
-
-
-
-
+    <% } %>
 
 </main>
 <footer>
