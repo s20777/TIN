@@ -13,26 +13,64 @@
 <%- include('../../fragments/header.ejs') %>
 
 <main>
+    <script src="/js/validationCommon.js"></script>
+    <script src="/js/validationDeptForm.js"></script>
     <h2>
-        Nowy departament
+        Departament
     </h2>
-    <form class="form" novalidate onsubmit="validateForm(event);">
+    <form class="form" method="post" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
+
         <label for="deptName">Nazwa: <span class="symbol-required">*</span></label>
-        <input type="text" name="deptName" id="deptName" required/>
+        <input type="text" name="deptName" id="deptName" placeholder="2-60 znaków"
+               value="<%= dept.name %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
         <span id="errorDeptName"></span>
 
         <label for="budget">Budżet: <span class="symbol-required">*</span></label>
-        <input type="text" name="budget" id="budget" required/>
+        <input type="text" name="budget" id="budget" placeholder="2-60 znaków"
+               value="<%= dept.budget %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
         <span id="errorBudget"></span>
 
         <span id="errorsSummary"></span>
 
-        <div class="form-buttons">
-            <span id="errorEmail"></span>
-            <input type="submit" value="Dodaj" class="form-button-submit"/>
-            <a href="/departments" class="form-button-cancel">Anuluj</a>
+
+        <% if (formMode == 'showDetails') { %>
+            <div>
+                <a class="list-actions-button-edit" href="/departments/edit/<%= dept._id %>">Edytuj</a>
+            </div>
+        <% } %>
+
+        <div>
+            <p id="errorsSummary" class="errors-text"></p>
+
+            <% if (formMode != 'showDetails') { %>
+                <input class="form-button-submit" type="submit"/>
+                <a class="form-button-cancel" href="/departments">Anuluj</a>
+            <% } else { %>
+                <a class="form-button-cancel" href="/departments">Powrót</a>
+            <% } %>
         </div>
+
     </form>
+
+    <% if (formMode == 'showDetails' || formMode == 'edit') { %>
+        <h2>
+            Szczegóły departamentu
+        </h2>
+
+        <table class="table-list">
+            <thead>
+            <tr>
+                <th>Imie</th>
+                <th>Nazwisko</th>
+            </tr>
+            </thead>
+
+
+
+        </table>
+    <% } %>
+
+
 </main>
 <footer>
     Aleksandra Tomasiewicz s20777

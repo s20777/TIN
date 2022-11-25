@@ -13,44 +13,28 @@
             </tr>
             </thead>
             <tbody>
+
+            <% for (let dept of depts) { %>
+
             <tr>
-                <td>HR</td>
-                <td>234000 tys</td>
+
+                <td><%= dept.name %></td>
+                <td><%= dept.budget %></td>
+
                 <td>
                     <ul class="list-actions">
                         <li>
-                            <a href="/departments/details/:deptId"
-                               class="list-actions-button-details">Szczegóły</a>
+                            <a href="/departments/details/<%=dept._id%>" class="list-actions-button-details">Szczegóły</a>
                         </li>
                         <li>
-                            <a href="/departments/edit/:deptId"
-                               class="list-actions-button-edit">Edytuj</a>
+                            <a href="/departments/edit/<%=dept._id%>" class="list-actions-button-edit">Edytuj</a>
                         </li>
                         <li>
                             <a  class="list-actions-button-delete">Usuń</a>
                         </li>
                     </ul>
             </tr>
-            <tr>
-                <td>AUC</td>
-                <td>1236000 tys</td>
-                <td>
-
-                    <ul class="list-actions">
-                        <li>
-                            <a href="/departments/details/:deptId"
-                               class="list-actions-button-details">Szczegóły</a>
-
-                        </li>
-                        <li>
-                            <a href="/departments/edit/:deptId"
-                               class="list-actions-button-edit">Edytuj</a>
-                        </li>
-                        <li>
-                            <a class="list-actions-button-delete">Usuń</a>
-                        </li>
-                    </ul>
-            </tr>
+            <% } %>
             </tbody>
         </table>
 
