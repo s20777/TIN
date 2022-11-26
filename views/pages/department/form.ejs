@@ -20,12 +20,16 @@
     </h2>
     <form class="form" method="post" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
 
-        <label for="deptName">Nazwa: <span class="symbol-required">*</span></label>
-        <input type="text" name="deptName" id="deptName" placeholder="2-60 znaków"
+        <input type="hidden" name="_id" value="<%= dept._id %>">
+
+
+        <label for="name">Nazwa: <span class="symbol-required">*</span></label>
+        <input type="text" name="name" id="name" placeholder="2-60 znaków"
                value="<%= dept.name %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
         <span id="errorDeptName"></span>
 
-        <label for="budget">Budżet: <span class="symbol-required">*</span></label>
+        <label for="budget">Budget: <span class="symbol-required">*</span></label>
+
         <input type="text" name="budget" id="budget" placeholder="2-60 znaków"
                value="<%= dept.budget %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
         <span id="errorBudget"></span>
@@ -62,8 +66,24 @@
             <tr>
                 <th>Imie</th>
                 <th>Nazwisko</th>
+                <th>Wynagrodzenie</th>
+                <th>Początek zatrudnienia</th>
+                <th>Koniec zatrudnienia</th>
             </tr>
             </thead>
+
+            <tbody>
+
+            <% for (let d of dept.employments) { %>
+                <tr>
+                    <td><a href="/employees/details/<%= d.employee._id %>"><%= d.employee.firstName %></a></td>
+                    <td><%= d.employee.lastName %></td>
+                    <td><%= d.salary %></td>
+                    <td><%= d.dateFrom.toISOString().split('T')[0] %></td>
+                    <td><%= d.dateTo ? d.dateTo.toISOString().split('T')[0] : '' %></td>
+                </tr>
+            <% } %>
+            </tbody>
 
 
 

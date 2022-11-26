@@ -1,4 +1,5 @@
 const DepartmentRepository = require('../repository/sequelize/departmentRepository')
+const EmployeeRepository = require("../repository/sequelize/employeeRepository");
 
 exports.showDepartmentList = (req, res, next) => {
     DepartmentRepository.getDepartments()
@@ -50,3 +51,31 @@ exports.showDepartmentDetails = (req, res, next) => {
                 navLocation: 'dept'
             })})
 }
+
+
+exports.addDepartment = (req, res, next) => {
+    const deptData = {...req.body};
+    DepartmentRepository.createDepartment(deptData)
+        .then(result => {
+            res.redirect('/departments')
+        })
+};
+
+exports.updateDepartment = (req, res, next) => {
+    const deptId = req.body._id;
+    const deptData = {...req.body};
+
+    DepartmentRepository.updateDepartment(deptId, deptData)
+        .then(result => {
+            res.redirect('/departments')
+        })
+
+};
+
+exports.deleteDepartment = (req, res, next) => {
+    const deptId = req.body._id;
+    DepartmentRepository.deleteDepartment(deptId)
+        .then(result => {
+            res.redirect('/departments')
+        })
+};
