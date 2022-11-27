@@ -22,7 +22,7 @@
         <input type="hidden" name="_id" value="<%= employment._id %>">
 
         <label for="firstName">Imię: <span class="symbol-required">*</span></label>
-        <select id="employee" name="empId" required <%= (formMode == 'showDetails' ) ? 'disabled' : '' %> >
+        <select id="emp_id" name="emp_id" required <%= (formMode == 'showDetails' ) ? 'disabled' : '' %> >
 
             <% if (formMode != 'edit' ){ %>
                 <option value="" selected="selected">--Wybierz pracownika--</option>
@@ -36,7 +36,7 @@
 
         </select>
         <label for="name">Departament: <span class="symbol-required">*</span></label>
-        <select id="name" name="name" required <%= (formMode == 'showDetails' ) ? 'disabled' : '' %> >
+        <select id="dept_id" name="dept_id" required <%= (formMode == 'showDetails' ) ? 'disabled' : '' %> >
 
             <% if (formMode != 'edit' ){ %>
                 <option value="" selected="selected">--Wybierz departament--</option>
@@ -50,16 +50,24 @@
         </select>
 
         <label for="Start">Start:<span class="symbol-required">*</span></label>
-        <input type="date" name="startDate" id="startDate"
+        <input type="date" name="dateFrom" id="dateFrom"
                value="<%= (formMode == 'createNew') ? '' : employment.dateFrom.toISOString().split('T')[0]  %>"
                 <%= (formMode == 'showDetails' ) ? 'disabled' : '' %> />
         <span id="errorStart"></span>
 
         <label for="Finish">Koniec: <span class="symbol-required">*</span></label>
-        <input type="Date" name="Finish" id="finishDate"
+        <input type="Date" name="dateTo" id="dateTo"
                value="<%= (formMode == 'createNew') ? '' : employment.dateTo.toISOString().split('T')[0] %> %>"
                 <%= (formMode == 'showDetails' ) ? 'disabled' : '' %> />
         <span id="errorFinish"></span>
+
+        <label for="salary">Wynagrodzenie: </label>
+        <input type="text" name="salary" id="salary"
+               value="<%= (formMode == 'createNew') ? '' : employment.salary  %>"
+                <%= (formMode == 'showDetails' ) ? 'disabled' : '' %> />
+        <span id="errorSalary"></span>
+
+
 
 
         <span id="errorsSummary"></span>
@@ -74,7 +82,7 @@
             <p id="errorsSummary" class="errors-text"></p>
 
             <% if (formMode != 'showDetails') { %>
-            <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
+            <input class="form-button-submit" type="submit" />
             <a class="form-button-cancel" href="/employments">Anuluj</a>
             <% } else { %>
                 <a class="form-button-cancel" href="/employments">Powrót</a>

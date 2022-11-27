@@ -30,7 +30,7 @@ exports.showAddEmploymentForm = (req, res, next) => {
                 allDepts: allDepts,
                 formMode: 'createNew',
                 pageTitle: 'Lista zatrudnien',
-                formAction: 'employments/add',
+                formAction: '/employments/add',
                 navLocation : 'employment'
             })
         })
@@ -99,4 +99,35 @@ exports.showEmploymentDetails = (req, res, next) => {
         });
 
 }
+
+exports.addEmployment = (req, res, next) => {
+    // let allEmps, allDepts;
+    const employmentData = { ...req.body };
+
+    EmploymentRepository.createEmployment(employmentData)
+        .then(result => {
+            res.redirect('/employments');
+        })
+        .catch(err => {
+            error = err;
+            return EmployeeRepository.getEmployees();
+        })
+        .then(employees => {
+            allEmps= employees;
+            return DepartmentRepository.getDepartments()
+        })
+        .then(depts => {
+            allDepts = depts;
+            res.render('pages/employment/form', {
+                employment: {},
+                allEmps: allEmps,
+                allDepts: allDepts,
+                formMode: 'createNew',
+                pageTitle: 'Dodawanie zatrudnienia',
+                btnLabel: 'Dodaj zatrudnienie',
+                formAction: '/employments/add',
+                navLocation: 'employment',
+            });
+        });
+};
 
