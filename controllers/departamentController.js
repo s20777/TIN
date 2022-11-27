@@ -1,5 +1,4 @@
 const DepartmentRepository = require('../repository/sequelize/departmentRepository')
-const EmployeeRepository = require("../repository/sequelize/employeeRepository");
 
 exports.showDepartmentList = (req, res, next) => {
     DepartmentRepository.getDepartments()

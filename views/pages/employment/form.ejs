@@ -5,51 +5,80 @@
     <title>Demo Test</title>
     <link rel="stylesheet" href="/css/style.css">
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <script src="/js/validationCommon.js"></script>
-    <script src="/js/validationEmploymentForm.js"></script>
+
 </head>
 
 <body>
 <%- include('../../fragments/header.ejs') %>
 
 <main>
+    <script src="/js/validationCommon.js"></script>
+    <script src="/js/validationEmploymentForm.js"></script>
     <h2>
-        Nowe zatrudnienie
+        Zatrudnienie
     </h2>
-    <form class="form" novalidate onsubmit="validateForm(event);">
+    <form class="form" method="post" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
+
+        <input type="hidden" name="_id" value="<%= employment._id %>">
+
         <label for="firstName">Imię: <span class="symbol-required">*</span></label>
-        <input type="text" name="firstName" id="firstName" placeholder="2-60 znaków" required/>
-        <span id="errorFirstName"></span>
+        <select id="employee" name="empId" required <%= (formMode == 'showDetails' ) ? 'disabled' : '' %> >
 
-        <label for="lastName">Nazwisko: <span class="symbol-required">*</span></label>
-        <input type="text" name="lastName" id="lastName" placeholder="2-60 znaków" required/>
-        <span id="errorlastName"></span>
+            <% if (formMode != 'edit' ){ %>
+                <option value="" selected="selected">--Wybierz pracownika--</option>
+            <% } %>
 
+            <% for (let i = 0; i < allEmps.length; i++) {let emp = allEmps[i]; %>
+            <option value="<%= emp._id %>" label="<%= emp.firstName + ' ' + emp.lastName %>"
+                    <%= (employment._id && emp._id.toString() == employment.employee._id.toString()) ? 'selected' : '' %>>
+            </option>
+            <% } %>
 
-        <label for="email">Email: <span class="symbol-required">*</span></label>
-        <input type="text" name="email" id="email" placeholder="2-60 znaków" required/>
-        <span id="erroremail"></span>
+        </select>
+        <label for="name">Departament: <span class="symbol-required">*</span></label>
+        <select id="name" name="name" required <%= (formMode == 'showDetails' ) ? 'disabled' : '' %> >
 
+            <% if (formMode != 'edit' ){ %>
+                <option value="" selected="selected">--Wybierz departament--</option>
+            <% } %>
 
-        <label for="deptName">Nazwa departamentu: <span class="symbol-required">*</span></label>
-        <input type="text" name="deptName" id="deptName" placeholder="2-60 znaków" required/>
-        <span id="errorDeptName"></span>
+            <% for (let i = 0; i < allDepts.length; i++) {let dept = allDepts[i]; %>
+            <option value="<%= dept._id %>" label="<%= dept.name %>"
+                    <%= (employment._id && dept._id.toString() == employment.department._id.toString()) ? 'selected' : '' %>>
+            </option>
+            <% } %>
+        </select>
 
         <label for="Start">Start:<span class="symbol-required">*</span></label>
-        <input type="Date" id="Start" id="startDate" placeholder="2-60 znaków" required/>
+        <input type="date" name="startDate" id="startDate"
+               value="<%= (formMode == 'createNew') ? '' : employment.dateFrom.toISOString().split('T')[0]  %>"
+                <%= (formMode == 'showDetails' ) ? 'disabled' : '' %> />
         <span id="errorStart"></span>
 
         <label for="Finish">Koniec: <span class="symbol-required">*</span></label>
-        <input type="Date" id="Finish" id="finishDate" placeholder="2-60 znaków" required/>
+        <input type="Date" name="Finish" id="finishDate"
+               value="<%= (formMode == 'createNew') ? '' : employment.dateTo.toISOString().split('T')[0] %> %>"
+                <%= (formMode == 'showDetails' ) ? 'disabled' : '' %> />
         <span id="errorFinish"></span>
 
 
         <span id="errorsSummary"></span>
 
-        <div class="form-buttons">
-            <span id="errorEmail"></span>
-            <input type="submit" value="Dodaj" class="form-button-submit"/>
-            <a href="/departments" class="form-button-cancel">Anuluj</a>
+        <% if (formMode == 'showDetails') { %>
+        <div>
+            <a class="list-actions-button-edit" href="/employments/edit/<%= employment._id %>">Edytuj</a>
+        </div>
+        <% } %>
+
+        <div>
+            <p id="errorsSummary" class="errors-text"></p>
+
+            <% if (formMode != 'showDetails') { %>
+            <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
+            <a class="form-button-cancel" href="/employments">Anuluj</a>
+            <% } else { %>
+                <a class="form-button-cancel" href="/employments">Powrót</a>
+            <% } %>
         </div>
 
     </form>
