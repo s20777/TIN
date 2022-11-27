@@ -131,3 +131,34 @@ exports.addEmployment = (req, res, next) => {
         });
 };
 
+exports.updateEmployment = (req, res, next) => {
+    let allEmps, allDepts;
+    const employmentId = req.body._id;
+    const employmentData = { ...req.body };
+
+    EmploymentRepository.updateEmployment(employmentId, employmentData)
+        .then(result => {
+            res.redirect('/employments');
+        })
+        .then(employees => {
+            allEmps= employees;
+            return DepartmentRepository.getDepartments()
+        })
+        .then(depts => {
+            allDepts= depts;
+            return EmploymentRepository.getEmploymentById(employmentId)
+        })
+        .then(employment => {
+            res.render('pages/employment/form', {
+                employment: employment,
+                allEmps: allEmps,
+                allDepts: allDepts,
+                formMode: 'edit',
+                pageTitle: 'Edycja zatrudnienia',
+                btnLabel: 'Edytuj zatrudnienie',
+                formAction: '/employments/edit',
+                navLocation: 'employment',
+            });
+        });
+};
+

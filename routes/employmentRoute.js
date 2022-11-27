@@ -10,5 +10,7 @@ router.get('/edit/:employmentId', employmentController.showEditEmploymentForm);
 router.get('/details/:employmentId', employmentController.showEmploymentDetails);
 
 router.post('/add', employmentController.addEmployment);
+router.post('/edit', employmentController.updateEmployment);
+// router.get('/delete/:empId', employmentController.);
 
 module.exports = router;
