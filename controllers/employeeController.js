@@ -52,17 +52,22 @@ exports.showEmployeeDetails = (req, res, next) => {
             })})
 }
 
-// exports.showEmployeeEdit = (req, res, next) => {
-//     res.render('pages/employee/form-edit', {navLocation: "emp"});
-// }
-
-
 exports.addEmployee = (req, res, next) => {
     const empData = {...req.body};
     EmployeeRepository.createEmployee(empData)
         .then(result => {
             res.redirect('/employees')
         })
+        .catch(err => {
+        res.render('pages/employee/form', {
+            emp: empData,
+            pageTitle: 'Nowy pracownik',
+            formMode: 'createNew',
+            btnLabel: 'Dodaj pracownika',
+            formAction: '/employees/add',
+            navLocation: 'emp',
+            validationErrors: err.errors
+        })})
 };
 
 exports.updateEmployee = (req, res, next) => {
