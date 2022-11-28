@@ -5,15 +5,13 @@
     <title>Demo Test</title>
     <link rel="stylesheet" href="/css/style.css">
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <script src="/js/validationCommon.js"></script>
-    <script src="/js/validationDeptForm.js"></script>
 </head>
 
 <body>
 <%- include('../../fragments/header.ejs') %>
 
 <main>
-    <script src="/js/validationCommon.js"></script>
+    <script type="application/javascript" src="/js/validationCommon.js"></script>
     <script src="/js/validationDeptForm.js"></script>
     <h2>
         Departament
@@ -26,7 +24,8 @@
         <label for="name">Nazwa: <span class="symbol-required">*</span></label>
         <input type="text" name="name" id="name" placeholder="2-60 znaków"
                value="<%= dept.name %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
-        <span id="errorDeptName"></span>
+        <span id="errorDeptName" class="errors-text"></span>
+
 
         <label for="budget">Budget: <span class="symbol-required">*</span></label>
 

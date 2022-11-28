@@ -72,9 +72,10 @@ exports.updateDepartment = (req, res, next) => {
 };
 
 exports.deleteDepartment = (req, res, next) => {
-    const deptId = req.body._id;
+    const deptId = req.body.deptId;
+
     DepartmentRepository.deleteDepartment(deptId)
-        .then(result => {
-            res.redirect('/departments')
+        .then( () => {
+            res.redirect('/departments');
         })
 };
