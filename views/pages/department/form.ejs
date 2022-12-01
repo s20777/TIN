@@ -11,10 +11,8 @@
 <%- include('../../fragments/header.ejs') %>
 
 <main>
-<!--    <script src="/js/validationCommon.js"></script>-->
-<!--    <script src="/js/validationDeptForm.js"></script>-->
-    <script src="/public/js/validationCommon.js"></script>
-    <script src="/public/js/validationDeptForm.js"></script>
+    <script src="/js/validationCommon.js"></script>
+    <script src="/js/validationDeptForm.js"></script>
 
     <h2>
         Departament
@@ -23,18 +21,24 @@
 
         <input type="hidden" name="_id" value="<%= dept._id %>">
 
-
-        <label for="name">Nazwa: <span class="symbol-required">*</span></label>
-        <input type="text" name="name" id="name" placeholder="2-60 znaków"
-               value="<%= dept.name %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
-        <span id="errorDeptName" class="errors-text"></span>
+        <label for="deptName">Nazwa: <span class="symbol-required">*</span></label>
+        <input type="text" name="deptName" id="deptName" placeholder="2-60 znaków"
+               value="<%= dept.deptName %>" class="<%= validationErrors.find(e=>e.path.includes('deptName')) ? 'error-input' : '' %>"  <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+        <span id="errorDeptName" class="errors-text">
+            <% if (validationErrors.find(e=> e.path.includes('deptName'))) { %>
+                <%= validationErrors.find(e=> e.path.includes('deptName')).message %>
+            <% } %>
+        </span>
 
 
         <label for="budget">Budget: <span class="symbol-required">*</span></label>
-
         <input type="text" name="budget" id="budget" placeholder="2-60 znaków"
-               value="<%= dept.budget %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
-        <span id="errorBudget"></span>
+               value="<%= dept.budget %>" class="<%= validationErrors.find(e=>e.path.includes('budget')) ? 'error-input' : '' %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+        <span id="errorBudget" class="errors-text">
+            <% if (validationErrors.find(e=> e.path.includes('budget'))) { %>
+                <%= validationErrors.find(e=> e.path.includes('budget')).message %>
+            <% } %>
+        </span>
 
         <span id="errorsSummary"></span>
 

@@ -33,7 +33,8 @@ exports.showEditDepartmentForm = (req, res, next) => {
                 pageTitle: 'Edycja departamentu',
                 btnLabel: 'Edytuj departament',
                 formAction: '/departments/edit',
-                navLocation: 'dept'
+                navLocation: 'dept',
+                validationErrors: []
             })})
 }
 
@@ -47,7 +48,8 @@ exports.showDepartmentDetails = (req, res, next) => {
                 formMode: 'showDetails',
                 pageTitle: 'Szczegóły departamentu',
                 formAction: '',
-                navLocation: 'dept'
+                navLocation: 'dept',
+                validationErrors: []
             })})
 }
 
@@ -58,16 +60,37 @@ exports.addDepartment = (req, res, next) => {
         .then(result => {
             res.redirect('/departments')
         })
+        .catch(err => {
+            res.render('pages/department/form', {
+                dept: deptData,
+                pageTitle: 'Nowy departament',
+                formMode: 'createNew',
+                btnLabel: 'Dodaj departament',
+                formAction: '/departments/add',
+                navLocation: 'dept',
+                validationErrors: err.errors
+            })})
 };
 
 exports.updateDepartment = (req, res, next) => {
     const deptId = req.body._id;
     const deptData = {...req.body};
+    let error;
 
     DepartmentRepository.updateDepartment(deptId, deptData)
         .then(result => {
             res.redirect('/departments')
         })
+        .catch(dept => {
+            res.render('pages/department/form', {
+                dept: dept,
+                pageTitle: 'Edytcja departamentu',
+                formMode: 'edit',
+                btnLabel: 'Edytuj departament',
+                formAction: '/departments/edit',
+                navLocation: 'dept',
+                validationErrors: error.errors
+        })})
 
 };
 

@@ -8,13 +8,33 @@ const Department = sequelize.define('Department', {
         allowNull: false,
         primaryKey: true
     },
-    name: {
+    deptName: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            isAlpha: {
+                msg: "Pole musi zawierać litery"
+            },
+            notEmpty: {
+                msg: "Pole jest wymagane"
+            },
+            len: {
+                args : [2,60],
+                msg: "Pole powinno zawierac od 2 do 6 znakow"
+            },
+        }
     },
     budget: {
         type: Sequelize.DECIMAL(10,2),
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "Pole jest wymagane"
+            },
+            isDecimal:  {
+                msg: "Pole powinno zawierać tylko litery"
+            }
+        }
     }
 });
 

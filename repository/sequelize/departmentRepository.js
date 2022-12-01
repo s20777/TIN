@@ -23,13 +23,13 @@ exports.getDepartmentById = (deptId) => {
 
 exports.createDepartment = (newDeptData) => {
     return Department.create({
-        name: newDeptData.name,
+        deptName: newDeptData.deptName,
         budget: newDeptData.budget
     });
 };
 
 exports.updateDepartment = (deptId, deptData) => {
-    const name = deptData.name;
+    const deptName = deptData.deptName;
     const budget = deptData.budget;
     return Department.update(deptData, {where: {_id: deptId }});
 };

@@ -37,8 +37,8 @@ module.exports = () => {
         .then( depts => {
             if( !depts || depts.length == 0 ) {
                 return Department.bulkCreate([
-                    { name: 'HR', budget: 100_000},
-                    { name: 'AUC', budget: 900_000}
+                    { deptName: 'HR', budget: 100_000},
+                    { deptName: 'AUC', budget: 900_000}
                 ])
                     .then( () => {
                         return Employee.findAll();
