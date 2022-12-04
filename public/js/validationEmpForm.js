@@ -18,7 +18,12 @@ function validateForm(event) {
         valid = false;
         firstNameInput.classList.add("error-input");
         errorFirstName.innerText = "Pole jest wymagane";
-    } else if (!checkTextLengthRange(firstNameInput.value, 2, 60)) {
+    }  else if (!onlyLetters(firstNameInput.value)) {
+        valid = false;
+        firstNameInput.classList.add("error-input");
+        errorFirstName.innerText = "Pole powinno zaiwerac tylko litery";
+    }
+    else if (!checkTextLengthRange(firstNameInput.value, 2, 60)) {
         valid = false;
         firstNameInput.classList.add("error-input");
         errorFirstName.innerText = "Pole powinno zawierać od 2 do 60 znaków";
@@ -28,7 +33,12 @@ function validateForm(event) {
         valid = false;
         lastNameInput.classList.add("error-input");
         errorLastName.innerText = "Pole jest wymagane";
-    } else if (!checkTextLengthRange(lastNameInput.value, 2, 60)) {
+    } else if (!onlyLetters(lastNameInput.value)) {
+        valid = false;
+        lastNameInput.classList.add("error-input");
+        errorLastName.innerText = "Pole powinno zaiwerac tylko litery";
+    }
+    else if (!checkTextLengthRange(lastNameInput.value, 2, 60)) {
         valid = false;
         lastNameInput.classList.add("error-input");
         errorLastName.innerText = "Pole powinno zawierać od 2 do 60 znaków";

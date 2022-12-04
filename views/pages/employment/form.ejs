@@ -51,7 +51,7 @@
 
         <label for="Start">Start:</label>
         <input type="date" name="dateFrom" id="dateFrom" class="<%= validationErrors && validationErrors.find(e=>e.path.includes('dateFrom')) ? 'error-input' : '' %>"
-               value="<%= (formMode == 'createNew' && employment.dateFrom) && employment.dateFrom.toISOString().split('T')[0]  %>"
+               value="<%= (formMode == 'createNew') ? '' : employment.dateFrom  %>"
                 <%= (formMode == 'showDetails' ) ? 'disabled' : '' %> />
         <span id="errorStart">
             <% if (validationErrors && validationErrors.find(e=> e.path.includes('dateFrom'))) { %>
@@ -61,7 +61,7 @@
 
         <label for="Finish">Koniec: <span class="symbol-required">*</span></label>
         <input type="date" name="dateTo" id="dateTo"
-               value="<%= (formMode == 'createNew') ? '' : employment.dateTo.toISOString().slice(0,-8)  %>"
+               value="<%= (formMode == 'createNew') ? '' : employment.dateTo  %>"
                 <%= (formMode == 'showDetails' ) ? 'disabled' : '' %> />
         <span id="errorFinish"></span>
 

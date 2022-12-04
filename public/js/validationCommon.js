@@ -77,6 +77,21 @@ function checkNumber(value) {
     return true;
 }
 
+function isAlpha(value) {
+    if (!value) {
+        return false;
+    }
+    if (value.matches("[a-zA-Z]+")) {
+        return false;
+    }
+
+    return true;
+}
+
+function onlyLetters(value) {
+    return /^[a-zA-Z]+$/.test(value);
+}
+
 
 function checkNumberRange(value, min, max) {
     if (!value) {

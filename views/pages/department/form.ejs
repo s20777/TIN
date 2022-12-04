@@ -53,7 +53,7 @@
             <p id="errorsSummary" class="errors-text"></p>
 
             <% if (formMode != 'showDetails') { %>
-                <input class="form-button-submit"  value="test" type="submit"/>
+                <input class="form-button-submit"  value="Prześlij" type="submit"/>
                 <a class="form-button-cancel" href="/departments">Anuluj</a>
             <% } else { %>
                 <a class="form-button-cancel" href="/departments">Powrót</a>
@@ -85,8 +85,8 @@
                     <td><a href="/employees/details/<%= d.employee._id %>"><%= d.employee.firstName %></a></td>
                     <td><%= d.employee.lastName %></td>
                     <td><%= d.salary %></td>
-                    <td><%= d.dateFrom.toISOString().split('T')[0] %></td>
-                    <td><%= d.dateTo ? d.dateTo.toISOString().split('T')[0] : '' %></td>
+                    <td><%= d.dateFrom ? d.dateFrom : '' %></td>
+                    <td><%= d.dateTo ? d.dateTo : '' %></td>
                 </tr>
             <% } %>
             </tbody>

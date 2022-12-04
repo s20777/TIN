@@ -146,30 +146,25 @@ exports.updateEmployment = (req, res, next) => {
             res.redirect('/employments');
         })
         .catch(err => {
-            error = err;
-            return EmploymentRepository.getEmployments()
-        })
-        .then(employees => {
-            allEmps= employees;
-            return DepartmentRepository.getDepartments()
-        })
-        .then(depts => {
-            allDepts= depts;
-            return EmploymentRepository.getEmploymentById(employmentId)
-        })
-        .then(employment => {
-            res.render('pages/employment/form', {
-                employment: employment,
-                allEmps: allEmps,
-                allDepts: allDepts,
-                formMode: 'edit',
-                pageTitle: 'Edycja zatrudnienia',
-                btnLabel: 'Edytuj zatrudnienie',
-                formAction: '/employments/edit',
-                navLocation: 'employment',
-                validationErrors: error.errors
-            });
-        });
+            EmployeeRepository.getEmployees()
+                .then(emps => {
+                    allEmps = emps;
+                    return DepartmentRepository.getDepartments();
+                })
+                .then(depts => {
+                    allDepts = depts;
+                    res.render('pages/employment/form', {
+                        employment: employmentData,
+                        allEmps: allEmps,
+                        allDepts: allDepts,
+                        formMode: 'edit',
+                        pageTitle: 'Edycja zatrudnienia',
+                        btnLabel: 'Edytuj zatrudnienie',
+                        formAction: '/employments/edit',
+                        navLocation: 'employment',
+                        validationErrors: error.errors
+                    })})
+                })
 };
 
 exports.deleteEmployment = (req, res, next) => {

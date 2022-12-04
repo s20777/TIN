@@ -17,6 +17,10 @@ function validateForm(event) {
         valid = false;
         deptNameInput.classList.add("error-input");
         errorDeptName.innerText = "Pole jest wymagane";
+    }  else if (!onlyLetters(deptNameInput.value)) {
+        valid = false;
+        deptNameInput.classList.add("error-input");
+        errorDeptName.innerText = "Pole powinno zaiwerac tylko litery";
     } else if (!checkTextLengthRange(deptNameInput.value, 2, 60)) {
         valid = false;
         deptNameInput.classList.add("error-input");
