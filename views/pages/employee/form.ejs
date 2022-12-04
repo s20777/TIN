@@ -24,7 +24,7 @@
         <input type="hidden" name="_id" value="<%= emp._id %>">
 
         <label for="firstName">Imię: <span class="symbol-required">*</span></label>
-        <input type="text" pattern="^[0-9]*$"  name="firstName" id="firstName" placeholder="2-60 znaków"
+        <input type="text"  name="firstName" id="firstName" placeholder="2-60 znaków"
                value="<%= emp.firstName %>" class="<%= validationErrors.find(e=>e.path.includes('firstName')) ? 'error-input' : '' %>"  <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
         <span id="errorFirstName" class="errors-text">
             <% if (validationErrors.find(e=> e.path.includes('firstName'))) { %>
