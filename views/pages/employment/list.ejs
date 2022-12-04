@@ -16,7 +16,7 @@
                   <tr>
 
                       <td><%= emplmt.employee.firstName  + ' ' +  emplmt.employee.lastName %></td>
-                      <td><%= emplmt.department.name %></td>
+                      <td><%= emplmt.department.deptName %></td>
 
 
                       <td>
@@ -28,7 +28,7 @@
                                   <a href="/employments/edit/<%=emplmt._id%>" class="list-actions-button-edit">Edytuj</a>
                               </li>
                               <li>
-                                  <a class="list-actions-button-delete">Usuń</a>
+                                  <a href="/employments/delete/<%=emplmt._id%>" class="list-actions-button-delete">Usuń</a>
                               </li>
                           </ul>
                       </td>

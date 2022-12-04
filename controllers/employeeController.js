@@ -75,18 +75,47 @@ exports.addEmployee = (req, res, next) => {
 exports.updateEmployee = (req, res, next) => {
     const empId = req.body._id;
     const empData = {...req.body};
+    let error;
+
 
     EmployeeRepository.updateEmployee(empId, empData)
         .then(result => {
             res.redirect('/employees')
         })
+        .catch(err => {
+            error = err;
+            return EmployeeRepository.getEmployeeById(empId)
+        })
+        .catch(err => {
+            res.render('pages/employee/form', {
+                emp: empData,
+                pageTitle: 'Edycja pracownik',
+                formMode: 'edit',
+                btnLabel: 'Edycja pracownika',
+                formAction: '/employees/edit',
+                navLocation: 'emp',
+                validationErrors: err.errors
+            })})
 
 };
 
 exports.deleteEmployee = (req, res, next) => {
-    const empId = req.body._id;
+    const empId = req.params.empId;
+    const empData = { ...req.body }
+
     EmployeeRepository.deleteEmployee(empId)
         .then(result => {
             res.redirect('/employees')
         })
+        .catch(err => {
+            res.render('pages/employee/form', {
+                emp: empData,
+                formMode: 'delete',
+                pageTitle: 'Usuwanie pracownika',
+                btnLabel: 'Usuń pracownika',
+                formAction: '/employees/delete',
+                navLocation: 'emp',
+                validationErrors: err.errors
+            })
+        });
 };

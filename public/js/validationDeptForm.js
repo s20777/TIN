@@ -1,5 +1,4 @@
 function validateForm(event) {
-    event.preventDefault();
     const deptNameInput = document.getElementById("deptName");
     const budgetInput = document.getElementById("budget");
   
@@ -28,10 +27,14 @@ function validateForm(event) {
         valid = false;
         budgetInput.classList.add("error-input");
         errorBudget.innerText = "Pole jest wymagane";
-    } else if (!checkTextLengthRange(budgetInput.value, 2, 60)) {
+    } else if (!checkNumber(budgetInput.value)) {
         valid = false;
         budgetInput.classList.add("error-input");
-        errorBudget.innerText = "Pole powinno zawierać od 2 do 60 znaków";
+        errorBudget.innerText = "Pole powinno byc liczbą";
+    } else if (!checkNumberRange(budgetInput.value, 3000, 15000)) {
+        valid = false;
+        budgetInput.classList.add("error-input");
+        errorBudget.innerText = "Pole powinno byc w zakresie od 3000 do 15000 ";
     }
 
     

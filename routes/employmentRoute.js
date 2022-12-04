@@ -11,6 +11,6 @@ router.get('/details/:employmentId', employmentController.showEmploymentDetails)
 
 router.post('/add', employmentController.addEmployment);
 router.post('/edit', employmentController.updateEmployment);
-// router.get('/delete/:empId', employmentController.);
+router.get('/delete/:employmentId', employmentController.deleteEmployment);
 
 module.exports = router;

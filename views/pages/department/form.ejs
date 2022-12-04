@@ -17,7 +17,7 @@
     <h2>
         Departament
     </h2>
-    <form class="form" method="post" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
+    <form class="form" method="post" action="<%= formAction %>" onsubmit="return validateForm();">
 
         <input type="hidden" name="_id" value="<%= dept._id %>">
 
@@ -53,7 +53,7 @@
             <p id="errorsSummary" class="errors-text"></p>
 
             <% if (formMode != 'showDetails') { %>
-                <input class="form-button-submit" type="submit"/>
+                <input class="form-button-submit"  value="test" type="submit"/>
                 <a class="form-button-cancel" href="/departments">Anuluj</a>
             <% } else { %>
                 <a class="form-button-cancel" href="/departments">Powrót</a>

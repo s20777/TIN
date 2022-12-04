@@ -13,8 +13,8 @@
 <%- include('../../fragments/header.ejs') %>
 
 <main>
-    <script src="public/js/validationCommon.js"></script>
-    <script src="public/js/validationEmpForm.js"></script>
+    <script src="/js/validationCommon.js"></script>
+    <script src="/js/validationEmpForm.js"></script>
 
     <h2>
         Pracownik
@@ -92,7 +92,7 @@
 
             <% for (let e of emp.employments) { %>
                 <tr>
-                    <td><a href="/departments/details/<%= e.department._id %>"><%= e.department.name %></a></td>
+                    <td><a href="/departments/details/<%= e.department._id %>"><%= e.department.deptName %></a></td>
                     <td><%= e.salary %></td>
                     <td><%= e.dateFrom.toISOString().split('T')[0] %></td>
                     <td><%= e.dateTo ? e.dateTo.toISOString().split('T')[0] : '' %></td>

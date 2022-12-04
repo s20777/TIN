@@ -15,9 +15,6 @@ const Employee = sequelize.define('Employee', {
             notEmpty: {
                 msg: "Pole jest wymagane"
             },
-            isAlpha: {
-                msg: "Pole powinno zawierac tylko litery"
-            },
             len: {
                 args : [2,60],
                 msg: "Pole powinno zawierac od 2 do 6 znakow"
@@ -30,9 +27,6 @@ const Employee = sequelize.define('Employee', {
         validate: {
             notEmpty: {
                 msg: "Pole jest wymagane"
-            },
-            isAlpha: {
-                msg: "Pole powinno zawierac tylko litery"
             },
             len: {
                 args : [2,60],

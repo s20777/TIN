@@ -24,14 +24,16 @@ exports.showAddEmploymentForm = (req, res, next) => {
         })
         .then(depts => {
             allDepts = depts;
+            console.log(allEmps, allDepts)
             res.render('pages/employment/form', {
                 employment: {},
-                allEmps: allEmps,
-                allDepts: allDepts,
+                allEmps,
+                allDepts,
                 formMode: 'createNew',
                 pageTitle: 'Lista zatrudnien',
                 formAction: '/employments/add',
-                navLocation : 'employment'
+                navLocation : 'employment',
+                validationErrors: []
             })
         })
 }
@@ -101,7 +103,6 @@ exports.showEmploymentDetails = (req, res, next) => {
 }
 
 exports.addEmployment = (req, res, next) => {
-    // let allEmps, allDepts;
     const employmentData = { ...req.body };
 
     EmploymentRepository.createEmployment(employmentData)
@@ -109,36 +110,44 @@ exports.addEmployment = (req, res, next) => {
             res.redirect('/employments');
         })
         .catch(err => {
-            error = err;
-            return EmployeeRepository.getEmployees();
-        })
-        .then(employees => {
-            allEmps= employees;
-            return DepartmentRepository.getDepartments()
-        })
-        .then(depts => {
-            allDepts = depts;
-            res.render('pages/employment/form', {
-                employment: {},
-                allEmps: allEmps,
-                allDepts: allDepts,
-                formMode: 'createNew',
-                pageTitle: 'Dodawanie zatrudnienia',
-                btnLabel: 'Dodaj zatrudnienie',
-                formAction: '/employments/add',
-                navLocation: 'employment',
-            });
-        });
+            let allEmps, allDepts;
+            console.log(err)
+            EmployeeRepository.getEmployees()
+                .then(emps => {
+                    allEmps = emps;
+                    return DepartmentRepository.getDepartments();
+                })
+                .then(depts => {
+                    allDepts = depts;
+                    res.render('pages/employment/form', {
+                        employment: {},
+                        allEmps,
+                        allDepts,
+                        pageTitle: 'Dodawanie zatrudnienia',
+                        btnLabel: 'Dodaj zatrudnienie',
+                        formMode: 'createNew',
+                        formAction: '/employments/add',
+                        navLocation: 'employment',
+                        validationErrors: err.errors
+                    })})
+
+                });
+
+
 };
 
 exports.updateEmployment = (req, res, next) => {
-    let allEmps, allDepts;
+    let allEmps, allDepts, error;
     const employmentId = req.body._id;
     const employmentData = { ...req.body };
 
     EmploymentRepository.updateEmployment(employmentId, employmentData)
         .then(result => {
             res.redirect('/employments');
+        })
+        .catch(err => {
+            error = err;
+            return EmploymentRepository.getEmployments()
         })
         .then(employees => {
             allEmps= employees;
@@ -158,7 +167,28 @@ exports.updateEmployment = (req, res, next) => {
                 btnLabel: 'Edytuj zatrudnienie',
                 formAction: '/employments/edit',
                 navLocation: 'employment',
+                validationErrors: error.errors
             });
         });
+};
+
+exports.deleteEmployment = (req, res, next) => {
+    const employmentId = req.params.employmentId;
+
+    EmploymentRepository.deleteEmployment(employmentId)
+        .then(() => {
+            res.redirect('/employments');
+        })
+        // .catch(err => {
+        //     res.render('pages/employment/form', {
+        //         employment: employmentData ,
+        //         pageTitle: 'Usuwanie zatrudnienia',
+        //         formMode: 'delete',
+        //         btnLabel: 'Usuń zatrudnienie',
+        //         formAction: '/employments/delete',
+        //         navLocation: 'employment',
+        //         validationErrors: []
+        //     })
+        // });
 };
 

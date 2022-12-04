@@ -1,82 +1,55 @@
 function validateForm(event) {
-    event.preventDefault();
-    const firstNameInput = document.getElementById("firstName");
-    const lastNameInput = document.getElementById("lastName");
-    const emailInput = document.getElementById("email");
+    const emp_id = document.getElementById("emp_id");
+    const dept_id = document.getElementById("dept_id");
+    const dateFrom = document.getElementById("dateFrom");
+    const dateTo = document.getElementById("dateTo");
+    const salary = document.getElementById("salary");
 
-    const deptNameInput = document.getElementById("deptName");
-    const budgetInput = document.getElementById("budget");
-
-    const errorFirstName = document.getElementById("errorFirstName");
-    const errorLastName = document.getElementById("errorlastName");
-    const errorEmail = document.getElementById("erroremail");
-    
-    const errorDeptName = document.getElementById("errorDeptName");
-    const errorBudget = document.getElementById("errorBudget");
+    const errorEmp_id = document.getElementById("errorEmp_id");
+    const errorDept_id = document.getElementById("errorDept_id");
+    const errorStart = document.getElementById("errorStart");
+    const errorFinish = document.getElementById("errorFinish");
+    const errorBudget = document.getElementById("errorSalary");
 
     const errorsSummary = document.getElementById("errorsSummary");
 
     let valid = true;
 
-    resetErrors([firstNameInput, lastNameInput, emailInput, deptNameInput,budgetInput], [errorFirstName, errorLastName, errorEmail, errorDeptName,errorBudget], errorsSummary);
+    resetErrors([emp_id, dept_id, dateTo, salary], [errorEmp_id, errorDept_id, errorStart, errorFinish,errorBudget], errorsSummary);
 
 
-    if (!checkRequired(firstNameInput.value)) {
+    if (!checkRequired(emp_id.value) || emp_id.value == "--Wybierz pracownika--")
+    {
         valid = false;
-        firstNameInput.classList.add("error-input");
-        errorFirstName.innerText = "Pole jest wymagane";
-    } else if (!checkTextLengthRange(firstNameInput.value, 2, 60)) {
-        valid = false;
-        firstNameInput.classList.add("error-input");
-        errorFirstName.innerText = "Pole powinno zawierać od 2 do 60 znaków";
+        emp_id.classList.add("error-input");
+        errorEmp_id.innerText = "Pole jest wymagane";
     }
 
-    if (!checkRequired(lastNameInput.value)) {
+    if (!checkRequired(dept_id.value)) {
         valid = false;
-        lastNameInput.classList.add("error-input");
-        errorLastName.innerText = "Pole jest wymagane";
-    } else if (!checkTextLengthRange(lastNameInput.value, 2, 60)) {
-        valid = false;
-        lastNameInput.classList.add("error-input");
-        errorLastName.innerText = "Pole powinno zawierać od 2 do 60 znaków";
+        dept_id.classList.add("error-input");
+        errorDept_id.innerText = "Pole jest wymagane";
     }
 
-    if (!checkRequired(emailInput.value)) {
+    if (!checkRequired(dateFrom.value)) {
         valid = false;
-        emailInput.classList.add("error-input");
-        errorEmail.innerText = "Pole jest wymagane";
-    } else if (!checkTextLengthRange(emailInput.value, 5, 60)) {
-        valid = false;
-        emailInput.classList.add("error-input");
-        errorEmail.innerText = "Pole powinno zawierać od 5 do 60 znaków";
-    } else if (!checkEmail(emailInput.value)) {
-        valid = false;
-        emailInput.classList.add("error-input");
-        errorEmail.innerText = "Pole powinno zawierac prawidłowy email";
+        dateFrom.classList.add("error-input");
+        errorStart.innerText = "Pole jest wymagane";
     }
 
-    if (!checkRequired(deptNameInput.value)) {
-        valid = false;
-        deptNameInput.classList.add("error-input");
-        errorDeptName.innerText = "Pole jest wymagane";
-    } else if (!checkTextLengthRange(deptNameInput.value, 2, 60)) {
-        valid = false;
-        deptNameInput.classList.add("error-input");
-        errorDeptName.innerText = "Pole powinno zawierać od 2 do 60 znaków";
-    }
 
-    if (!checkRequired(budgetInput.value)) {
+    if (!checkRequired(salary.value)) {
         valid = false;
-        budgetInput.classList.add("error-input");
+        salary.classList.add("error-input");
         errorBudget.innerText = "Pole jest wymagane";
-    } else if (!checkNumber(budgetInput.value)) {
+    } else if (!checkNumber(salary.value)) {
         valid = false;
-        budgetInput.classList.add("error-input");
+        salary.classList.add("error-input");
         errorBudget.innerText = "Pole powinno byc liczbą";
-    } else if (!checkNumberRange(budgetInput.value, 3000, 3_000_000)) {
+    } else if (!checkNumberRange(salary.value, 3000, 15000)) {
         valid = false;
-        budgetInput.classList.add("error-input");
-        errorBudget.innerText = "Pole powinno byc w zakresie od 3000 do 3000000 ";
+        salary.classList.add("error-input");
+        errorBudget.innerText = "Pole powinno byc w zakresie od 3000 do 15000 ";
     }
 
     if (!valid) {

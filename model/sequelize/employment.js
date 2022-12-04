@@ -10,23 +10,46 @@ const Employment = sequelize.define('Employment', {
     },
     salary: {
         type: Sequelize.DECIMAL(10,2),
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "Pole jest wymagane"
+            },
+            isDecimal :{
+                msg: "Pole musi byc liczbą"
+            }
+        }
     },
     dateFrom: {
-        type: Sequelize.DATE,
-        allowNull: false
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "Pole jest wymagane"
+            }
+        }
     },
     dateTo: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
         allowNull: true
     },
     emp_id: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "Pole jest wymagane"
+            },
+        }
     },
     dept_id: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "Pole jest wymagane"
+            },
+        }
     }
 });
 

@@ -12,9 +12,6 @@ const Department = sequelize.define('Department', {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
-            isAlpha: {
-                msg: "Pole musi zawierać litery"
-            },
             notEmpty: {
                 msg: "Pole jest wymagane"
             },
