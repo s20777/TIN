@@ -9,9 +9,27 @@ var indexRouter = require('./routes/index');
 var employeeRouter = require('./routes/employeeRoute');
 var employmentRouter = require('./routes/employmentRoute');
 var departmentRouter = require('./routes/departmentRoute');
-
-
+const session = require('express-session');
 var app = express();
+
+
+// add session
+app.use(session({
+    secret: 'my_secret_password',
+    resave: false
+}));
+
+app.use((req, res, next) => {
+    const loggedUser = req.session.loggedUser;
+    res.locals.loggedUser = loggedUser;
+
+    if(!res.locals.loginError){
+        res.locals.loginError = undefined;
+    }
+
+    next();
+});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -3,6 +3,9 @@ const sequelize = require('./sequelize');
 const Employee = require('../../model/sequelize/employee');
 const Department = require('../../model/sequelize/department');
 const Employment = require('../../model/sequelize/employment');
+//
+const authUtil = require('../../util/authUtlis');
+const passHash = authUtil.hashPassword('12345');
 
 module.exports = () => {
     Employee.hasMany(Employment, {as: 'employments', foreignKey: {name: 'emp_id', allowNull: false}, constraints: true, onDelete: 'CASCADE'});
@@ -19,9 +22,9 @@ module.exports = () => {
         .then(emps => {
             if( !emps || emps.length == 0 ) {
                 return Employee.bulkCreate([
-                    {firstName: 'Ola', lastName: 'Kowalczyk', email: 'ola.kowalczyk@gmail.com'},
-                    {firstName: 'Basia', lastName: 'Borczyk', email: 'basia.borczyk@gmail.com'},
-                    {firstName: 'Zosia', lastName: 'Niemczyk', email: 'zosia.niemczyk@gmail.com'},
+                    {firstName: 'Ola', lastName: 'Kowalczyk', email: 'ola.kowalczyk@gmail.com', password: passHash},
+                    {firstName: 'Basia', lastName: 'Borczyk', email: 'basia.borczyk@gmail.com', password: '12345'},
+                    {firstName: 'Zosia', lastName: 'Niemczyk', email: 'zosia.niemczyk@gmail.com', password: '12345'},
                 ])
                     .then( () => {
                         return Employee.findAll();

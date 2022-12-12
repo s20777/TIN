@@ -44,7 +44,10 @@
     </table>
 
     <p>
-        <a href="/employees/add" class="button-add">Dodaj nowego pracownika</a>
+        <% if(loggedUser) { %>
+    <p><a href="/employees/add" class="button-add">Dodaj nowego pracownika</a></p>
+    <% } %>
+
 
     </p>
 </main>

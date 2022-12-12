@@ -11,6 +11,9 @@ RUN npm install
 RUN npm i -g nodemon
 RUN npm i mysql2
 RUN npm i sequelize
+RUN npm i express-session
+RUN npm i bcryptjs
+
 
 COPY . .
 

@@ -42,3 +42,9 @@ exports.deleteEmployee = (empId) => {
     });
 
 };
+
+exports.findByEmail = (email) => {
+    return Employee.findOne({
+        where : {email: email}
+    })
+}

@@ -9,6 +9,26 @@
 </head>
 <body>
 <header>
+
+    <% if(!loggedUser) { %>
+        <div id="login">
+            <h5>Logowanie</h5>
+            <form action="/login" method="post" novalidate>
+                <label for="loginEmail">Email: </label>
+                <input type="email" id="loginEmail" name="email">
+
+                <label for="loginPassword">Hasło: </label>
+                <input type="password" id="loginPassword" name="password">
+
+                <input type="submit" value="Zaloguj sie">
+            </form>
+        </div>
+    <% } else { %>
+        <span>Jestes zalogowany: <%= loggedUser.firstName + " " + loggedUser.lastName%></span>
+        <a href="/logout">Wyloguj sie</a>
+    <% } %>
+
+
     <h1>
         System do zarządzania pracownikami
     </h1>
