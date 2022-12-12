@@ -11,3 +11,14 @@ exports.comparePasswords = (passPlan, passHash) => {
     const res = bcrypt.compareSync(passPlan, passHash);
     return res;
 }
+
+exports.permitAuthenticatedUser = (req, res, next) => {
+    const loggedUser = req.session.loggedUser;
+    console.log('user logged', loggedUser);
+    if(loggedUser){
+        next();
+    }else {
+        // throw new Error('unauthorized access')
+        res.redirect('/?message=Nie masz uprawnień do tej strony');
+    }
+}

@@ -39,8 +39,9 @@
         </table>
 
         <p>
-            <a href="/departments/add" class="button-add">Dodaj nowy departament</a>
-
+            <% if(loggedUser) { %>
+    <p><a href="/departments/add" class="button-add">Dodaj nowy departament</a></p>
+    <% } %>
         </p>
     </main>
     <footer>

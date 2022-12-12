@@ -23,8 +23,8 @@ module.exports = () => {
             if( !emps || emps.length == 0 ) {
                 return Employee.bulkCreate([
                     {firstName: 'Ola', lastName: 'Kowalczyk', email: 'ola.kowalczyk@gmail.com', password: passHash},
-                    {firstName: 'Basia', lastName: 'Borczyk', email: 'basia.borczyk@gmail.com', password: '12345'},
-                    {firstName: 'Zosia', lastName: 'Niemczyk', email: 'zosia.niemczyk@gmail.com', password: '12345'},
+                    {firstName: 'Basia', lastName: 'Borczyk', email: 'basia.borczyk@gmail.com', password: passHash},
+                    {firstName: 'Zosia', lastName: 'Niemczyk', email: 'zosia.niemczyk@gmail.com', password: passHash},
                 ])
                     .then( () => {
                         return Employee.findAll();

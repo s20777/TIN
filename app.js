@@ -11,6 +11,8 @@ var employmentRouter = require('./routes/employmentRoute');
 var departmentRouter = require('./routes/departmentRoute');
 const session = require('express-session');
 var app = express();
+const authUtils = require('./util/authUtlis')
+
 
 
 // add session
@@ -19,16 +21,7 @@ app.use(session({
     resave: false
 }));
 
-app.use((req, res, next) => {
-    const loggedUser = req.session.loggedUser;
-    res.locals.loggedUser = loggedUser;
 
-    if(!res.locals.loginError){
-        res.locals.loginError = undefined;
-    }
-
-    next();
-});
 
 
 // view engine setup
@@ -41,10 +34,21 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/public')));
 
+app.use((req, res, next) => {
+    const loggedUser = req.session.loggedUser;
+    res.locals.loggedUser = loggedUser;
+
+    if(!res.locals.loginError){
+        res.locals.loginError = undefined;
+    }
+
+    next();
+});
+
 app.use('/', indexRouter);
-app.use('/employees', employeeRouter);
-app.use('/employments', employmentRouter);
-app.use('/departments', departmentRouter);
+app.use('/employees', authUtils.permitAuthenticatedUser, employeeRouter);
+app.use('/employments',authUtils.permitAuthenticatedUser, employmentRouter);
+app.use('/departments',authUtils.permitAuthenticatedUser, departmentRouter);
 
 
 //db
