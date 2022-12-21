@@ -15,13 +15,20 @@ const authUtils = require('./util/authUtlis')
 
 
 
+
+const i18n = require('i18n');
+i18n.configure({
+   locales: ['pl', 'en'], // języki dostępne w aplikacji. Dla każdego z nich należy utworzyć osobny słownik
+   directory: path.join(__dirname, 'locales'), // ścieżka do katalogu, w którym znajdują się słowniki
+   objectNotation: true, // umożliwia korzstanie z zagnieżdżonych kluczy w notacji obiektowej
+   cookie: 'acme-hr-lang', //nazwa cookies, które nasza aplikacja będzie wykorzystywać do przechowania informacji o
+});
+
 // add session
 app.use(session({
     secret: 'my_secret_password',
     resave: false
 }));
-
-
 
 
 // view engine setup
@@ -32,7 +39,10 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cookieParser('secret'));
 app.use(express.static(path.join(__dirname, '/public')));
+
+
 
 app.use((req, res, next) => {
     const loggedUser = req.session.loggedUser;
@@ -41,6 +51,12 @@ app.use((req, res, next) => {
     if(!res.locals.loginError){
         res.locals.loginError = undefined;
     }
+
+      // console.log('lang',res.locals.lang);
+      if(!res.locals.lang) {
+        const currentLang = req.cookies['game-rent-lang'];
+        res.locals.lang = currentLang;
+      }
 
     next();
 });

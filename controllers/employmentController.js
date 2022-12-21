@@ -30,7 +30,7 @@ exports.showAddEmploymentForm = (req, res, next) => {
                 allEmps,
                 allDepts,
                 formMode: 'createNew',
-                pageTitle: 'Lista zatrudnien',
+                pageTitle: req.__('emp.form.add.pageTitle'),
                 formAction: '/employments/add',
                 navLocation : 'employment',
                 validationErrors: []

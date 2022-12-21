@@ -16,12 +16,11 @@
         <tbody>
 
         <% for (let emp of emps) { %>
-
         <tr>
-
-            <td><%= emp.firstName %></td>
-            <td><%= emp.lastName %></td>
-            <td><%= emp.email %></td>
+           <th><%= __('emp.fields.firstName') %></th>
+           <th><%= __('emp.fields.lastName') %></th>
+           <th><%= __('emp.fields.email') %></th>
+           <th><%= __('list.actions.title') %></th>
 
             <td>
                 <ul class="list-actions">

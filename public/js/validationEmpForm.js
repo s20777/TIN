@@ -1,4 +1,4 @@
-function validateForm(event) {
+function validateForm() {
     const firstNameInput = document.getElementById("firstName");
     const lastNameInput = document.getElementById("lastName");
     const emailInput = document.getElementById("email");
@@ -9,6 +9,9 @@ function validateForm(event) {
 
     const errorsSummary = document.getElementById("errorsSummary");
 
+    const reqMessage = document.getElementById('errorMessage-required').innerText;
+
+
     let valid = true;
 
     resetErrors([firstNameInput, lastNameInput, emailInput], [errorFirstName, errorLastName, errorEmail], errorsSummary);
@@ -17,7 +20,7 @@ function validateForm(event) {
     if (!checkRequired(firstNameInput.value)) {
         valid = false;
         firstNameInput.classList.add("error-input");
-        errorFirstName.innerText = "Pole jest wymagane";
+        errorFirstName.innerText = reqMessage;
     }  else if (!onlyLetters(firstNameInput.value)) {
         valid = false;
         firstNameInput.classList.add("error-input");

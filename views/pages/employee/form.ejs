@@ -31,6 +31,9 @@
                 <%= validationErrors.find(e=> e.path.includes('firstName')).message %>
             <% } %>
         </span>
+                 <div style="display: none;">
+                <span id="errorMessage-required"><%= __('validationMessage.fieldRequired')%></span>
+            </div>
 
         <label for="lastName">Nazwisko: <span class="symbol-required">*</span></label>
         <input type="text" name="lastName" id="lastName" placeholder="2-60 znaków"
