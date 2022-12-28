@@ -23,7 +23,7 @@
 
         <input type="hidden" name="_id" value="<%= emp._id %>">
 
-        <label for="firstName">Imię: <span class="symbol-required">*</span></label>
+        <label for="firstName"><%= __('emp.fields.firstName') %> <span class="symbol-required">*</span></label>
         <input type="text"  name="firstName" id="firstName" placeholder="2-60 znaków"
                value="<%= emp.firstName %>" class="<%= validationErrors.find(e=>e.path.includes('firstName')) ? 'error-input' : '' %>"  <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
         <span id="errorFirstName" class="errors-text">
@@ -35,7 +35,7 @@
                 <span id="errorMessage-required"><%= __('validationMessage.fieldRequired')%></span>
             </div>
 
-        <label for="lastName">Nazwisko: <span class="symbol-required">*</span></label>
+        <label for="lastName"><%= __('emp.fields.lastName') %> <span class="symbol-required">*</span></label>
         <input type="text" name="lastName" id="lastName" placeholder="2-60 znaków"
                value="<%= emp.lastName %>" class="<%= validationErrors.find(e=>e.path.includes('lastName')) ? 'error-input' : '' %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
         <span id="errorlastName" class="errors-text">
@@ -44,7 +44,7 @@
             <% } %>
         </span>
 
-        <label for="email">Email: <span class="symbol-required">*</span></label>
+        <label for="email"><%= __('emp.fields.email') %> <span class="symbol-required">*</span></label>
         <input type="text" name="email" id="email" placeholder="2-60 znaków"
                value="<%= emp.email %>" class="<%= validationErrors.find(e=>e.path.includes('email')) ? 'error-input' : '' %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
         <span id="erroremail" class="errors-text">

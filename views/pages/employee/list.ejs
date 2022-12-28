@@ -1,26 +1,34 @@
-<%- include('../../fragments/header.ejs') %>
+<!-- <%- include('../../fragments/header.ejs') %> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP1</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <%- include('../../fragments/header.ejs') %>
 <main>
     <h2>
         Lista pracownikow
     </h2>
     <table class="table-list">
         <thead>
-        <tr>
-            <th>Imie</th>
-            <th>Nazwisko</th>
-            <th>E-mail</th>
-            <th>Akcje</th>
-        </tr>
+            <th><%= __('emp.fields.firstName') %></th>
+            <th><%= __('emp.fields.lastName') %></th>
+            <th><%= __('emp.fields.email') %></th>
+            <th><%= __('emp.fields.actions') %></th>
         </thead>
 
         <tbody>
 
         <% for (let emp of emps) { %>
         <tr>
-           <th><%= __('emp.fields.firstName') %></th>
-           <th><%= __('emp.fields.lastName') %></th>
-           <th><%= __('emp.fields.email') %></th>
-           <th><%= __('list.actions.title') %></th>
+           <th><%- emp.firstName %></th>
+           <th><%- emp.lastName %></th>
+           <th><%- emp.email %></th>
 
             <td>
                 <ul class="list-actions">

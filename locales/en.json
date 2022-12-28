@@ -54,5 +54,17 @@
 				}
 			}
         }
-    }
+    },
+	"dept": {
+		"fields": {
+			"deptName": "Departments",
+			"budget": "Budget"
+		},
+		"list": {
+			"title": "Departments",
+			"addNew": "Adding a new deployment",
+			"noData": "No Departments in database",
+			"pageTitle": "List of departments"
+		}
+	}
 }

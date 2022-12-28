@@ -7,19 +7,20 @@
         <table class="table-list">
             <thead>
             <tr>
-                <th>Nazwa</th>
-                <th>Budżet</th>
-                <th>Akcje</th>
+            <th><%= __('dept.fields.deptName') %></th>
+            <th><%= __('dept.fields.budget') %></th>
+            <th>Akcje</th>
             </tr>
+
             </thead>
+
             <tbody>
 
             <% for (let dept of depts) { %>
 
             <tr>
-
-                <td><%= dept.deptName %></td>
-                <td><%= dept.budget %></td>
+            <th><%- dept.deptName %></th>
+            <th><%- dept.budget %></th>
 
                 <td>
                     <ul class="list-actions">

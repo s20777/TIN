@@ -54,5 +54,17 @@
 				}
 			}
 		}
+	},
+	"dept": {
+		"fields": {
+			"deptName": "Nazwa Departament",
+			"budget": "Budżet"
+		},
+		"list": {
+			"title": "Departamenty",
+			"addNew": "Dodaj nowy departament",
+			"noData": "Brak departamentu w bazie",
+			"pageTitle": "Lista departamentów"
+		}
 	}
 }

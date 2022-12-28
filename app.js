@@ -27,7 +27,8 @@ i18n.configure({
 // add session
 app.use(session({
     secret: 'my_secret_password',
-    resave: false
+    resave: false,
+    saveUninitialized: false
 }));
 
 
@@ -38,11 +39,11 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+// app.use(cookieParser());
 app.use(cookieParser('secret'));
 app.use(express.static(path.join(__dirname, '/public')));
 
-
+app.use(i18n.init);
 
 app.use((req, res, next) => {
     const loggedUser = req.session.loggedUser;
