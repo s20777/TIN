@@ -4,9 +4,9 @@
           <table class="table-list" >
             <thead>
             <tr>
-                <th>Pracownik</th>
-                <th>Departament</th>
-                <th>Akcje</th>
+                <th><%= __('employments.fields.employee') %></th>
+                <th><%= __('employments.fields.department') %></th>
+                 <th><%= __('list.actions.title') %></th>
             </tr>
             </thead>
               <tbody>
@@ -43,7 +43,7 @@
     <p><a href="employments/add" class="button-add"><%= __('list.actions.add') %></a>
     </p>
     <% } %>
-            <a href="/" class="form-button-submit">Powrót</a>
+            <a href="/" class="form-button-submit"><%= __('list.actions.return') %></a>
 
         </p>
     </main>

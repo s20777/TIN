@@ -8,7 +8,8 @@
 		"employee": "Employee",
 		"departments": "Departments",
 		"department": "Department",
-		"employments": "Employments"
+		"employments": "Employments",
+		"logOut": " Log out"
 	},
     "list": {
        "actions": {
@@ -84,7 +85,8 @@
 			"title": "Employment",
 			"addNew": "Adding a new employment",
 			"noData": "No employment in database",
-			"pageTitle": "List of employments"
+			"pageTitle": "List of employments",
+			"DeptChoose": "--Choose department--"
 		}
 	}
 }

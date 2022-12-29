@@ -8,7 +8,8 @@
 		"employee": "Pracownik",
 		"departments": "Departamenty",
 		"department": "Departament",
-		"employments": "Zatrudnienie"
+		"employments": "Zatrudnienie",
+		"logOut": " Wyloguj sie"
 	},
     "list": {
        "actions": {
@@ -76,7 +77,7 @@
 	"employments": {
 		"fields": {
 			"employee": "Pracownik",
-			"departament": "Departament",
+			"department": "Departament",
 			"salary": "pensja",
 			"StartDate": "Data od",
 			"EndDate": "Data do"
@@ -85,7 +86,8 @@
 			"title": "Zatrudnienie",
 			"addNew": "Dodaj nowe zatrudnienie ",
 			"noData": "Brak zatrudnienia w bazie",
-			"pageTitle": "Lista zatrudnien"
+			"pageTitle": "Lista zatrudnien",
+			"DeptChoose": "--Wybierz departament--"
 		}
 	}
 }

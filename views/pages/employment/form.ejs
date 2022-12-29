@@ -15,12 +15,12 @@
     <script src="/js/validationCommon.js"></script>
     <script src="/js/validationEmploymentForm.js"></script>
     <h2>
-        Zatrudnienie
+      <%= __('employments.list.title') %>
     </h2>
     <form class="form" method="post" action="<%= formAction %>" onsubmit="return validateForm(event);">
 
         <input type="hidden" name="_id" value="<%= employment._id %>">
-        <label for="emp_id">Imię: <span class="symbol-required">*</span></label>
+        <label for="emp_id"><%= __('emp.fields.firstName') %> <span class="symbol-required">*</span></label>
         <select id="emp_id" name="emp_id" required <%= (formMode == 'showDetails' ) ? 'disabled' : '' %> >
             <% if (formMode != 'edit' ){ %>
                 <option value="" selected="selected">--Wybierz pracownika--</option>
@@ -34,11 +34,11 @@
         </select>
         <span id="errorEmp_id"></span>
 
-        <label for="name">Departament: <span class="symbol-required">*</span></label>
+        <label for="name"><%= __('dept.fields.deptName') %> <span class="symbol-required">*</span></label>
         <select id="dept_id" name="dept_id" required <%= (formMode == 'showDetails' ) ? 'disabled' : '' %> >
 
             <% if (formMode != 'edit' ){ %>
-                <option value="" selected="selected">--Wybierz departament--</option>
+                <option value="" selected="selected"><%= __('employments.list.DeptChoose') %> </option>
             <% } %>
 
             <% for (let i = 0; i < allDepts.length; i++) {let dept = allDepts[i]; %>
@@ -49,7 +49,7 @@
         </select>
         <span id="errorDept_id"></span>
 
-        <label for="Start">Start:</label>
+        <label for="Start"><%= __('employments.fields.StartDate') %></label>
         <input type="date" name="dateFrom" id="dateFrom" class="<%= validationErrors && validationErrors.find(e=>e.path.includes('dateFrom')) ? 'error-input' : '' %>"
                value="<%= (formMode == 'createNew') ? '' : employment.dateFrom  %>"
                 <%= (formMode == 'showDetails' ) ? 'disabled' : '' %> />
@@ -59,13 +59,13 @@
             <% } %>
         </span>
 
-        <label for="Finish">Koniec: <span class="symbol-required">*</span></label>
+        <label for="Finish"><%= __('employments.fields.EndDate') %> <span class="symbol-required">*</span></label>
         <input type="date" name="dateTo" id="dateTo"
                value="<%= (formMode == 'createNew') ? '' : employment.dateTo  %>"
                 <%= (formMode == 'showDetails' ) ? 'disabled' : '' %> />
         <span id="errorFinish"></span>
 
-        <label for="salary">Wynagrodzenie: <span class="symbol-required">*</span></label>
+        <label for="salary"><%= __('employments.fields.salary') %> <span class="symbol-required">*</span></label>
         <input type="text" name="salary" id="salary"
                value="<%= (formMode == 'createNew') ? '' : employment.salary  %>"
                 <%= (formMode == 'showDetails' ) ? 'disabled' : '' %> />
@@ -78,7 +78,7 @@
 
         <% if (formMode == 'showDetails') { %>
         <div>
-            <a class="list-actions-button-edit" href="/employments/edit/<%= employment._id %>">Edytuj</a>
+            <a class="list-actions-button-edit" href="/employments/edit/<%= employment._id %>"><%= __('list.actions.edit') %></a>
         </div>
         <% } %>
 
@@ -87,9 +87,9 @@
 
             <% if (formMode != 'showDetails') { %>
             <input class="form-button-submit" type="submit" />
-            <a class="form-button-cancel" href="/employments">Anuluj</a>
+            <a class="form-button-cancel" href="/employments"><%= __('list.actions.delete') %></a>
             <% } else { %>
-                <a class="form-button-cancel" href="/employments">Powrót</a>
+                <a class="form-button-cancel" href="/employments"><%= __('list.actions.return') %></a>
             <% } %>
         </div>
 

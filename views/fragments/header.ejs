@@ -25,7 +25,7 @@
         </div>
     <% } else { %>
         <span>Jestes zalogowany: <%= loggedUser.firstName + " " + loggedUser.lastName%></span>
-        <a href="/logout">Wyloguj sie</a>
+        <a href="/logout"><%= __('nav.logOut') %></a>
     <% } %>
 
 
@@ -36,10 +36,10 @@
 </header>
 <nav>
     <ul>
-        <li><a href="/" class="<%= navLocation == 'main' ? 'active' : '' %>">Strona główna</a></li>
-        <li><a href="/employees" class="<%= navLocation == 'emp' ? 'active' : '' %>">Pracownicy</a>
-        <li><a href="/departments" class="<%= navLocation == 'dept' ? 'active' : '' %>">Departamenty</a>
-        <li><a href="/employments" class="<%= navLocation == 'employment' ? 'active' : '' %>">Zatrudnienia</a>
+        <li><a href="/" class="<%= navLocation == 'main' ? 'active' : '' %>"><%= __('nav.main-page') %></a></li>
+        <li><a href="/employees" class="<%= navLocation == 'emp' ? 'active' : '' %>"><%= __('nav.employees') %></a>
+        <li><a href="/departments" class="<%= navLocation == 'dept' ? 'active' : '' %>"><%= __('nav.departments') %></a>
+        <li><a href="/employments" class="<%= navLocation == 'employment' ? 'active' : '' %>"><%= __('nav.employments') %></a>
         <li><a href="/changeLang/pl" class="<%= lang == 'pl' ? 'active' : ''%>">PL</a></li>
         <li><a href="/changeLang/en" class="<%= lang == 'en' ? 'active' : ''%>">EN</a></li>
     </ul>
