@@ -17,7 +17,7 @@
     <script src="/js/validationEmpForm.js"></script>
 
     <h2>
-        Pracownik
+        <%= __('nav.employee') %>
     </h2>
     <form class="form" method="post" action="<%= formAction %>"  onsubmit="return validateForm();">
 
@@ -58,7 +58,7 @@
 
         <% if (formMode == 'showDetails') { %>
             <div>
-                <a class="list-actions-button-edit" href="/employees/edit/<%= emp._id %>">Edytuj</a>
+                <a class="list-actions-button-edit" href="/employees/edit/<%= emp._id %>"><%= __('form.actions.edit') %></a>
             </div>
         <% } %>
 
@@ -67,9 +67,9 @@
 
             <% if (formMode != 'showDetails') { %>
                 <input class="form-button-submit" type="submit"/>
-                <a class="form-button-cancel" href="/employees">Anuluj</a>
+                <a class="form-button-cancel" href="/employees"><%= __('form.actions.cancel') %></a>
             <% } else { %>
-                <a class="form-button-cancel" href="/employees">Powrót</a>
+                <a class="form-button-cancel" href="/employees"><%= __('form.actions.return') %></a>
             <% } %>
         </div>
 
@@ -78,16 +78,16 @@
 
     <% if (formMode == 'showDetails' || formMode == 'edit') { %>
         <h2>
-            Szczegóły pracownika
+            <%= __('emp.list.details') %>
         </h2>
 
         <table class="table-list">
             <thead>
             <tr>
-                <th>Department</th>
-                <th>Pensja</th>
-                <th>Data od</th>
-                <th>Data do</th>
+                <th><%= __('nav.department') %></th>
+                <th><%= __('employments.fields.salary') %></th>
+                <th><%= __('employments.fields.StartDate') %></th>
+                <th><%= __('employments.fields.EndDate') %></th>
 
             </tr>
             </thead>

@@ -15,13 +15,13 @@
     <script src="/js/validationDeptForm.js"></script>
 
     <h2>
-        Departament
+       <%= __('employments.fields.department') %>
     </h2>
     <form class="form" method="post" action="<%= formAction %>" onsubmit="return validateForm();">
 
         <input type="hidden" name="_id" value="<%= dept._id %>">
 
-        <label for="deptName">Nazwa: <span class="symbol-required">*</span></label>
+        <label for="deptName"><%= __('dept.fields.deptName') %><span class="symbol-required">*</span></label>
         <input type="text" name="deptName" id="deptName" placeholder="2-60 znaków"
                value="<%= dept.deptName %>" class="<%= validationErrors.find(e=>e.path.includes('deptName')) ? 'error-input' : '' %>"  <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
         <span id="errorDeptName" class="errors-text">
@@ -31,7 +31,7 @@
         </span>
 
 
-        <label for="budget">Budget: <span class="symbol-required">*</span></label>
+        <label for="budget"><%= __('dept.fields.budget') %> <span class="symbol-required">*</span></label>
         <input type="text" name="budget" id="budget" placeholder="2-60 znaków"
                value="<%= dept.budget %>" class="<%= validationErrors.find(e=>e.path.includes('budget')) ? 'error-input' : '' %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
         <span id="errorBudget" class="errors-text">
@@ -45,7 +45,7 @@
 
         <% if (formMode == 'showDetails') { %>
             <div>
-                <a class="list-actions-button-edit" href="/departments/edit/<%= dept._id %>">Edytuj</a>
+                <a class="list-actions-button-edit" href="/departments/edit/<%= dept._id %>"><%= __('list.actions.edit') %></a>
             </div>
         <% } %>
 
@@ -54,9 +54,9 @@
 
             <% if (formMode != 'showDetails') { %>
                 <input class="form-button-submit"  value="Prześlij" type="submit"/>
-                <a class="form-button-cancel" href="/departments">Anuluj</a>
+                <a class="form-button-cancel" href="/departments"><%= __('list.actions.delete') %></a>
             <% } else { %>
-                <a class="form-button-cancel" href="/departments">Powrót</a>
+                <a class="form-button-cancel" href="/departments"><%= __('list.actions.return') %></a>
             <% } %>
         </div>
 
@@ -64,17 +64,17 @@
 
     <% if (formMode == 'showDetails' || formMode == 'edit') { %>
         <h2>
-            Szczegóły departamentu
+            <%= __('emp.list.pageTitle') %>
         </h2>
 
         <table class="table-list">
             <thead>
             <tr>
-                <th>Imie</th>
-                <th>Nazwisko</th>
-                <th>Wynagrodzenie</th>
-                <th>Początek zatrudnienia</th>
-                <th>Koniec zatrudnienia</th>
+                <th><%= __('emp.fields.firstName') %></th>
+                <th><%= __('emp.fields.lastName') %></th>
+                <th><%= __('employments.fields.salary') %></th>
+                <th><%= __('employments.fields.StartDate') %></th>
+                <th><%= __('employments.fields.EndDate') %></th>
             </tr>
             </thead>
 

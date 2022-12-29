@@ -5,7 +5,9 @@
 	"nav": {
 		"main-page": "Main page",
 		"employees": "Employees",
+		"employee": "Employee",
 		"departments": "Departments",
+		"department": "Department",
 		"employments": "Employments"
 	},
     "list": {
@@ -13,7 +15,9 @@
          "title": "Actions",
          "details": "Details",
          "edit": "Edit",
-         "delete": "Delete"
+         "delete": "Delete",
+		 "add": "Add",
+		   "return": "Return"
        }
     },
     "form": {
@@ -33,7 +37,8 @@
 			"title": "Employees",
 			"addNew": "Add new employee",
 			"noData": "No employees in database",
-			"pageTitle": "List of employees"
+			"pageTitle": "List of employees",
+			"details": "Employee details"
 		},
 		"form": {
 			"employment": "History of employment",
@@ -57,7 +62,7 @@
     },
 	"dept": {
 		"fields": {
-			"deptName": "Departments",
+			"deptName": "Department name",
 			"budget": "Budget"
 		},
 		"list": {
@@ -65,6 +70,21 @@
 			"addNew": "Adding a new deployment",
 			"noData": "No Departments in database",
 			"pageTitle": "List of departments"
+		}
+	},
+	"employments": {
+		"fields": {
+			"employee": "Employee",
+			"department": "Department",
+			"salary": "Salary",
+			"StartDate": "Start Date",
+			"EndDate": "End Date"
+		},
+		"list": {
+			"title": "Employment",
+			"addNew": "Adding a new employment",
+			"noData": "No employment in database",
+			"pageTitle": "List of employments"
 		}
 	}
 }

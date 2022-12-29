@@ -5,7 +5,9 @@
 	"nav": {
 		"main-page": "Strona główna",
 		"employees": "Pracownicy",
+		"employee": "Pracownik",
 		"departments": "Departamenty",
+		"department": "Departament",
 		"employments": "Zatrudnienie"
 	},
     "list": {
@@ -13,7 +15,9 @@
           "title": "Akcje",
           "details": "Szczegóły",
           "edit": "Edytuj",
-          "delete": "Usuń"
+          "delete": "Usuń",
+		  "add": "dodaj",
+		  "return": "powrot"
        }
     },
    "form": {
@@ -33,7 +37,8 @@
 			"title": "Pracownicy",
 			"addNew": "Dodaj nowego pracownika",
 			"noData": "Brak pracowników w bazie",
-			"pageTitle": "Lista pracowników"
+			"pageTitle": "Lista pracowników",
+			"details": "Szczegóły pracownika"
 		},
 		"form": {
 			"employment": "Historia zatrudnienia",
@@ -64,7 +69,23 @@
 			"title": "Departamenty",
 			"addNew": "Dodaj nowy departament",
 			"noData": "Brak departamentu w bazie",
-			"pageTitle": "Lista departamentów"
+			"pageTitle": "Lista departamentów",
+			"details": "Szczegóły departamentu"
+		}
+	},
+	"employments": {
+		"fields": {
+			"employee": "Pracownik",
+			"departament": "Departament",
+			"salary": "pensja",
+			"StartDate": "Data od",
+			"EndDate": "Data do"
+		},
+		"list": {
+			"title": "Zatrudnienie",
+			"addNew": "Dodaj nowe zatrudnienie ",
+			"noData": "Brak zatrudnienia w bazie",
+			"pageTitle": "Lista zatrudnien"
 		}
 	}
 }

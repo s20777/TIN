@@ -1,7 +1,7 @@
 <%- include('../../fragments/header.ejs') %>
 <main>
         <h2>
-            Lista departamentów
+           <%= __('dept.list.pageTitle') %>
         </h2>
 
         <table class="table-list">
@@ -9,7 +9,7 @@
             <tr>
             <th><%= __('dept.fields.deptName') %></th>
             <th><%= __('dept.fields.budget') %></th>
-            <th>Akcje</th>
+            <th><%= __('list.actions.title') %></th>
             </tr>
 
             </thead>
@@ -25,13 +25,13 @@
                 <td>
                     <ul class="list-actions">
                         <li>
-                            <a href="/departments/details/<%=dept._id%>" class="list-actions-button-details">Szczegóły</a>
+                            <a href="/departments/details/<%=dept._id%>" class="list-actions-button-details"><%= __('list.actions.details') %></a>
                         </li>
                         <li>
-                            <a href="/departments/edit/<%=dept._id%>" class="list-actions-button-edit">Edytuj</a>
+                            <a href="/departments/edit/<%=dept._id%>" class="list-actions-button-edit"><%= __('list.actions.edit') %></a>
                         </li>
                         <li>
-                            <a  href="/departments/delete/<%=dept._id%>" class="list-actions-button-delete">Usuń</a>
+                            <a  href="/departments/delete/<%=dept._id%>" class="list-actions-button-delete"><%= __('list.actions.delete') %></a>
                         </li>
                     </ul>
             </tr>
@@ -41,7 +41,7 @@
 
         <p>
             <% if(loggedUser) { %>
-    <p><a href="/departments/add" class="button-add">Dodaj nowy departament</a></p>
+    <p><a href="/departments/add" class="button-add"><%= __('list.actions.add') %></a></p>
     <% } %>
         </p>
     </main>

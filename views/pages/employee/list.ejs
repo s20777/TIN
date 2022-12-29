@@ -12,14 +12,14 @@
     <%- include('../../fragments/header.ejs') %>
 <main>
     <h2>
-        Lista pracownikow
+        <%= __('emp.list.pageTitle') %>
     </h2>
     <table class="table-list">
         <thead>
             <th><%= __('emp.fields.firstName') %></th>
             <th><%= __('emp.fields.lastName') %></th>
             <th><%= __('emp.fields.email') %></th>
-            <th><%= __('emp.fields.actions') %></th>
+            <th><%= __('list.actions.title') %></th>
         </thead>
 
         <tbody>
@@ -33,13 +33,13 @@
             <td>
                 <ul class="list-actions">
                     <li>
-                        <a href="/employees/details/<%=emp._id%>" class="list-actions-button-details">Szczegóły</a>
+                        <a href="/employees/details/<%=emp._id%>" class="list-actions-button-details"><%= __('list.actions.details') %></a>
                     </li>
                     <li>
-                        <a href="/employees/edit/<%=emp._id%>" class="list-actions-button-edit">Edytuj</a>
+                        <a href="/employees/edit/<%=emp._id%>" class="list-actions-button-edit"><%= __('list.actions.edit') %></a>
                     </li>
                     <li>
-                        <a href="/employees/delete/<%=emp._id%>"class="list-actions-button-delete">Usuń</a>
+                        <a href="/employees/delete/<%=emp._id%>"class="list-actions-button-delete"><%= __('list.actions.delete') %></a>
                     </li>
                 </ul>
             </td>
@@ -52,7 +52,7 @@
 
     <p>
         <% if(loggedUser) { %>
-            <p><a href="/employees/add" class="button-add">Dodaj nowego pracownika</a></p>
+            <p><a href="/employees/add" class="button-add"><%= __('list.actions.add') %></a></p>
         <% } %>
     </p>
 

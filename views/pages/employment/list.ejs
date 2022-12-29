@@ -22,13 +22,13 @@
                       <td>
                           <ul class="list-actions">
                               <li>
-                                  <a href="/employments/details/<%=emplmt._id%>" class="list-actions-button-details">Szczegóły</a>
+                                  <a href="/employments/details/<%=emplmt._id%>" class="list-actions-button-details"><%= __('list.actions.details') %></a>
                               </li>
                               <li>
-                                  <a href="/employments/edit/<%=emplmt._id%>" class="list-actions-button-edit">Edytuj</a>
+                                  <a href="/employments/edit/<%=emplmt._id%>" class="list-actions-button-edit"><%= __('list.actions.edit') %></a>
                               </li>
                               <li>
-                                  <a href="/employments/delete/<%=emplmt._id%>" class="list-actions-button-delete">Usuń</a>
+                                  <a href="/employments/delete/<%=emplmt._id%>" class="list-actions-button-delete"><%= __('list.actions.delete') %></a>
                               </li>
                           </ul>
                       </td>
@@ -40,7 +40,7 @@
           </table>
         <p>
             <% if(loggedUser) { %>
-    <p><a href="employments/add" class="button-add">Dodaj nowe zatrudnienie</a>
+    <p><a href="employments/add" class="button-add"><%= __('list.actions.add') %></a>
     </p>
     <% } %>
             <a href="/" class="form-button-submit">Powrót</a>
