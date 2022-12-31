@@ -11,6 +11,7 @@ import Header from "./components/fragments/Header";
 import Navigation from "./components/fragments/Navigation";
 import MainContent from "./components/other/MainContent";
 import Footer from "./components/fragments/Footer";
+import EmployeeList from "./components/employee/EmployeeList";
 
 
 
@@ -22,7 +23,8 @@ function App() {
                 <Header/>
                 <Navigation/>
               <Routes>
-                  <Route path='/' component={<MainContent/>} />
+                  <Route exact path="/" element={<MainContent />} />
+                  <Route exact path='/employees' element={<EmployeeList/>} />
               </Routes>
               <Footer/>
           </div>
