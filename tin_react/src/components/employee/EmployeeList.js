@@ -1,8 +1,10 @@
 import React from 'react'
 import {Link} from "react-router-dom";
+import { getEmployeesApiCall} from "../../apiCalls/employeeApiCalls";
 // import { Link } from "react-router-dom";
 
 function EmployeeList() {
+    const employeeList = getEmployeesApiCall()
     return (
         <main>
             <h2>Lista pracowników</h2>
@@ -16,42 +18,27 @@ function EmployeeList() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Jan</td>
-                        <td>Kowalski</td>
-                        <td>jan.kowalski@acme.com</td>
-                        <td>
-                            <ul className="list-actions">
-                                <li>
-                                    <Link to="/employees/details/1" className="list-actions-button-details">Szczegóły</Link>
-                                </li>
-                                <li>
-                                    <Link to="/employees/edit/1" className="list-actions-button-edit">Edytuj</Link>
-                                </li>
-                                <li>
-                                    <Link to="/employees/delete/1" className="list-actions-button-delete">Usuń</Link>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Adam</td>
-                        <td>Nowak</td>
-                        <td>adam.nowak@acme.com</td>
-                        <td>
-                                                       <ul className="list-actions">
-                                <li>
-                                    <Link to="/employees/details/1" className="list-actions-button-details">Szczegóły</Link>
-                                </li>
-                                <li>
-                                    <Link to="/employees/edit/1" className="list-actions-button-edit">Edytuj</Link>
-                                </li>
-                                <li>
-                                    <Link to="/employees/delete/1" className="list-actions-button-delete">Usuń</Link>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
+                    {employeeList.map(
+                        emp =>
+                            <tr key={emp._id}>
+                                <td>{emp.firstName}</td>
+                                <td>{emp.lastName}</td>
+                                <td>{emp.email}</td>
+<td>
+     <ul className="list-actions">
+                                 <li>
+                                    <Link to={`/employees/details/${emp._id}`} className="list-actions-button-details">Szczegóły</Link>
+                                 </li>
+                                 <li>
+                                     <Link to={`/employees/edit/${emp._id}`} className="list-actions-button-edit">Edytuj</Link>
+                                 </li>
+                               <li>
+                                    <Link to={`/employees/delete/${emp._id}`} className="list-actions-button-delete">Usuń</Link>
+                                 </li>
+                             </ul>
+</td>
+                            </tr>
+                    )}
                 </tbody>
             </table>
             <p className="section-buttons">
