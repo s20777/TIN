@@ -1,7 +1,8 @@
 import {employeeDetailsList, employeeList} from "./employeeApiMockData";
+const employeesBaseUrl = 'http://localhost:8080/api/employees'
 
 export function getEmployeesApiCall() {
-    return employeeList
+    return fetch(employeesBaseUrl);
 }
 
 export function getEmployeeByIdApiCall(empId) {
