@@ -12,8 +12,7 @@ var departmentRouter = require('./routes/departmentRoute');
 const session = require('express-session');
 var app = express();
 const authUtils = require('./util/authUtlis')
-
-
+const cors = require('cors');
 
 
 const i18n = require('i18n');
@@ -42,6 +41,8 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser());
 app.use(cookieParser('secret'));
 app.use(express.static(path.join(__dirname, '/public')));
+app.use(cors());
+
 
 app.use(i18n.init);
 
@@ -81,7 +82,7 @@ app.use('/api/employees', empApiRouter);
 const deptApiRouter = require('./routes/api/departmentApiRoute');
 app.use('/api/departments', deptApiRouter);
 
-const employmentApiRouter = require('./routes/api/employmentApiRoute');
+const employmentApiRouter = require('./routes/api/employmentApiRoute')
 app.use('/api/employments', employmentApiRouter);
 
 // catch 404 and forward to error handler

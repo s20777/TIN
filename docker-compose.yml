@@ -7,15 +7,7 @@ services:
     volumes:
       - mongodata:/data/db
     restart: always
-  react:
-    container_name: app-dev
-    image: app-dev
-    build:
-      context: tin_react
-    volumes:
-      - ./src:/app/src
-    ports:
-      - 3000:3000
+
 
   mysql:
     image: mysql:latest
