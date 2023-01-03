@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 import { getEmployeesApiCall} from "../../apiCalls/employeeApiCalls";
-// import { Link } from "react-router-dom";
+
 
 function EmployeeList() {
     const employeeList = getEmployeesApiCall()
