@@ -1,4 +1,5 @@
 docker build -f Dockerfile -t sample:prod .
+docker run -it --rm -p 1337:80 sample:prod
 
 # Getting Started with Create React App
 

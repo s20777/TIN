@@ -2,7 +2,7 @@ import React from "react";
 
 import {
     BrowserRouter as Router,
-    Route, Routes
+    Route, Routes, Switch
 } from "react-router-dom";
 
 import Header from "./components/fragments/Header";
@@ -23,22 +23,23 @@ function App() {
           <div>
                 <Header/>
                 <Navigation/>
-              <Routes>
-                  <Route exact path="/" element={<MainContent />} />
-                  <Route exact path='/employees' element={<EmployeeList/>} />
-                  <Route exact path='/employees/details/:empId' element={<EmployeeDetails/>} />
-                  <Route exact path='/employees/add' element={<EmployeeForm/>} />
-                  <Route exact path='/employees/edit/:empId' element={<EmployeeForm/>} />
+              <Route>
+                  <Switch>
+                  <Route exact path="/" component={MainContent} />
+                  <Route exact path='/employees' component={EmployeeList} />
+                  <Route exact path='/employees/details/:empId' component={EmployeeDetails} />
+                  <Route exact path='/employees/add' component={EmployeeForm} />
+                  <Route exact path='/employees/edit/:empId' component={EmployeeForm} />
 
-                  <Route exact path='/employments' element={<EmploymentList/>} />
-                  <Route exact path='/employments/details/:employmentId' element={<EmploymentDetails/>} />
-                  <Route exact path='/employments/add' element={<EmploymentForm/>} />
-                  <Route exact path='/employments/edit/:employmentId' element={<EmploymentForm/>} />
+                  <Route exact path='/employments' component={EmploymentList} />
+                  <Route exact path='/employments/details/:employmentId' component={EmploymentDetails} />
+                  <Route exact path='/employments/add' component={EmploymentForm} />
+                  <Route exact path='/employments/edit/:employmentId' component={EmploymentForm} />
 
 
 
-
-              </Routes>
+                  </Switch>
+              </Route>
               <Footer/>
           </div>
       </Router>

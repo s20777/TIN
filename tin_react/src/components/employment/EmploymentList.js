@@ -1,44 +1,64 @@
-import React from "react"
-import { Link } from 'react-router-dom'
-import { getEmploymentsApiCall } from '../../apiCalls/employmentApiCalls'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { getEmploymentsApiCall } from '../../apiCalls/employmentApiCalls';
+import EmploymentListTable from "../../table/EmploymentListTable";
 
-function EmploymentList() {
-    const employmentList = getEmploymentsApiCall()
 
-    return (
-        <main>
-            <h2>Lista zatrudnień</h2>
-            <table className="table-list">
-                <thead>
-                    <tr>
-                        <th>Imię</th>
-                        <th>Nazwisko</th>
-                        <th>Departament</th>
-                        <th>Akcje</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {employmentList.map(employment => (
-                        <tr key={employment._id}>
-                            <td>{employment.employee.firstName}</td>
-                            <td>{employment.employee.lastName}</td>
-                            <td>{employment.department.name}</td>
-                            <td>
-                                <ul className="list-actions">
-                                    <li><Link to={`employments/details/${employment._id}`} className="list-actions-button-details">Szczegóły</Link></li>
-                                    <li><Link to={`employments/edit/${employment._id}`} className="list-actions-button-edit">Edytuj</Link></li>
-                                    <li><Link to={`employments/delete/${employment._id}`} className="list-actions-button-delete">Usuń</Link></li>
-                                </ul>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-            <p className="section-buttons">
-                <Link to="/employments/add" className="button-add">Dodaj nowe zatrudnienie</Link>
-            </p>
-        </main>
-    )
+class EmploymentList extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            error: null,
+            isLoaded: false,
+            employments: []
+        }
+    }
+
+    componentDidMount() {
+        this.fetchEmploymentList()
+    }
+
+    fetchEmploymentList = () => {
+        getEmploymentsApiCall()
+            .then(res => res.json())
+            .then(
+                (data) => {
+                    this.setState({
+                        isLoaded: true,
+                        employments: data
+                    });
+                },
+                (error) => {
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    });
+                }
+            )
+    }
+
+    render() {
+        const { error, isLoaded, employments } = this.state
+        let content;
+
+        if (error) {
+            content = <p>Błąd: {error.message}</p>
+        } else if (!isLoaded) {
+            content = <p>Ładowanie danych zatrudnień...</p>
+        } else {
+            content = <EmploymentListTable employmentsList={employments} />
+        }
+
+        return (
+            <main>
+                <h2>Lista zatrudnień</h2>
+                {content}
+                <p className="section-buttons">
+                    <Link to="/employment/add" className="button-add">Dodaj nowe zatrudnienie</Link>
+                </p>
+            </main>
+        )
+    }
 }
 
 export default EmploymentList
