@@ -116,37 +116,32 @@
 // export default EmployeeDetails
 
 
-
-
 import React, {useEffect, useState} from 'react'
 
-import {getEmployeeByIdApiCall} from "../../apiCalls/employeeApiCalls";
-import EmployeeDetailsData from "../../table/EmployeeDetailsData";
-import EmployeeListTable from "../../table/EmployeeListTable";
-import EmployeeListTableRow from "../../table/EmployeeListTableRow";
-import {Link, useParams} from "react-router-dom";
 
-export default function EmployeeDetails() {
-    const [emp, setEmp] = useState({});
-    let { empId } = useParams();
-    empId = parseInt(empId)
+import {useParams} from "react-router-dom";
+import {getDepartmentByIdApiCall} from "../../apiCalls/departmentApiCalls";
+
+export default function DepartmentDetails() {
+    const [dept, setDept] = useState({});
+    let { deptId } = useParams();
+    deptId = parseInt(deptId)
 
 
     useEffect(() => {
-        getEmployeeByIdApiCall(empId)
+        getDepartmentByIdApiCall(deptId)
             .then(res => res.json())
             .then(data => {
-                setEmp(data);
+                setDept(data);
             })
             .catch(error => {
             });
-    }, [empId]);
+    }, []);
 
     return (
         <main>
-            <h2>Imie: {emp.firstName}</h2>
-            <h2>Nazwisko: {emp.lastName}</h2>
-            <h2>Email:  {emp.email}</h2>
+            <h2>Nazwa departamentu: {dept.deptName}</h2>
+            <h2>Budżet: {dept.budget}</h2>
             <h2>Szczegoły zatrudnienia: </h2>
             <table className="table-list">
                 <thead>
@@ -158,7 +153,6 @@ export default function EmployeeDetails() {
                 </tr>
                 </thead>
                 <tbody>
-
                 </tbody>
             </table>
 

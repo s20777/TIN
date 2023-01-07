@@ -11,10 +11,13 @@ import MainContent from "./components/other/MainContent";
 import Footer from "./components/fragments/Footer";
 import EmployeeList from "./components/employee/EmployeeList";
 import EmployeeDetails from "./components/employee/EmployeeDetails";
-import EmploymentList from "./components/employment/EmploymentList";
+
 import EmploymentDetails from "./components/employment/ EmploymentDetails";
 import EmployeeForm from "./components/employee/EmployeeForm";
 import EmploymentForm from "./components/employment/EmploymentForm";
+import EmploymentList from "./components/employment/EmploymentList";
+import DepartmentList from "./components/department/DepartmentList";
+import DepartmentDetails from "./components/department/DepartmentDetails";
 
 
 function App() {
@@ -30,8 +33,11 @@ function App() {
                   <Route exact path='/employees/details/:empId' component={EmployeeDetails} />
                   <Route exact path='/employees/add' component={EmployeeForm} />
                   <Route exact path='/employees/edit/:empId' component={EmployeeForm} />
+                  <Route exact path='/departments' component={DepartmentList} />
+                  <Route exact path='/departments/details/:deptId' component={DepartmentDetails} />
 
-                  <Route exact path='/employments' component={EmploymentList} />
+
+                      <Route exact path='/employments' component={EmploymentList} />
                   <Route exact path='/employments/details/:employmentId' component={EmploymentDetails} />
                   <Route exact path='/employments/add' component={EmploymentForm} />
                   <Route exact path='/employments/edit/:employmentId' component={EmploymentForm} />

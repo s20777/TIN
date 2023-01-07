@@ -1,20 +1,21 @@
 import { useState, useEffect } from "react";
 import {getEmployeesApiCall} from "../../apiCalls/employeeApiCalls";
-import EmployeeListTable from "../../table/EmployeeListTable";
+import DepartmentListTable from "../../table/DepartmentListTable";
+import {getDepartmentsApiCall} from "../../apiCalls/departmentApiCalls";
 
-export default function EmployeeList() {
-    const [emps, setEmps] = useState([]);
+export default function DepartmentList() {
+    const [depts, setDepts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [message, setMessage] = useState('');
 
 
     useEffect(() => {
-        getEmployeesApiCall()
+        getDepartmentsApiCall()
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                setEmps(data);
+                setDepts(data);
                 setLoading(true);
             })
             .catch(error => {
@@ -27,7 +28,7 @@ export default function EmployeeList() {
     return (
         <main>
             <h2>Lista</h2>
-            <EmployeeListTable emps={emps} />
+            <DepartmentListTable depts={depts} />
         </main>
     )
 }

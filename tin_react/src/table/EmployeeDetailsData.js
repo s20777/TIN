@@ -3,14 +3,11 @@ import {getFormattedDate} from "../helpers/dateHelper";
 
 
 function EmployeeDetailsData(props){
-
-    const emp  = props
-    console.log(emp)
-
+    const { emp } = props
 
     return (
         <React.Fragment>
-            <p>Imie: </p>
+            <p>Imie: {emp.firstName}</p>
             <p>Nazwisko: {emp.lastName}</p>
             <p>Email: {emp.email}</p>
             <h2>Szczegoly zatrudnienia</h2>

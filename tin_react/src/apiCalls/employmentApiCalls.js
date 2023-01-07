@@ -7,6 +7,7 @@ export function getEmploymentsApiCall() {
 }
 
 export function getEmploymentByIdApiCall(employmentId) {
-    const emp = employmentDetailsList.find(employment => employment._id === employmentId)
-    return emp;
+    const url = `${employmentBaseUrl}/1`;
+    const promise = fetch(url);
+    return promise
 }

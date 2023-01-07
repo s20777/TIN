@@ -1,24 +1,46 @@
-import React from "react";
-import { getEmploymentByIdApiCall} from "../../apiCalls/employmentApiCalls";
-import {getFormattedDate} from "../../helpers/dateHelper";
-import {Link} from "react-router-dom";
-
-function EmploymentDetails({match}) {
+import React, { useState, useEffect } from "react";
+import {getEmploymentByIdApiCall, getEmploymentsApiCall} from "../../apiCalls/employmentApiCalls";
+import EmploymentListTable from "../../table/EmploymentListTable";
+import {Link, useParams} from "react-router-dom";
 
 
+export default function EmploymentDetails() {
+    const [employments, setEmployments] = useState({});
+    let { employmentId } = useParams();
+    employmentId = parseInt(employmentId)
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [message, setMessage] = useState('');
 
+
+    useEffect(() => {
+        getEmploymentByIdApiCall()
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setEmployments(data);
+            })
+            .catch(error => {
+                setError(error.message);
+                setLoading(true);
+            });
+
+
+    }, [employmentId]);
     return (
         <main>
-            <h2>Szczegóły zatrudnienia</h2>
+            <table className="table-list">
+                <thead>
+                <tr>
+                    <th>Pracownik</th>
+                    <th>Departament</th>
+                    <th>Akcje</th>
+                </tr>
+                </thead>
+                <tbody>
 
-            <div className="section-buttons">
-                <Link to="/employments" className="button-back">Powrót</Link>
-            </div>
-
+                </tbody>
+            </table>
         </main>
     )
-
-
 }
-
-export default EmploymentDetails
