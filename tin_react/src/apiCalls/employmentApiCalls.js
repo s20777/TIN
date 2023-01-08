@@ -6,6 +6,8 @@ export function getEmploymentsApiCall() {
     return fetch(employmentBaseUrl)
 }
 
+
+
 export function getEmploymentByIdApiCall(employmentId) {
     const url = `${employmentBaseUrl}/${employmentId}`;
     const promise = fetch(url);

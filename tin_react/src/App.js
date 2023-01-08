@@ -18,6 +18,7 @@ import EmploymentList from "./components/employment/EmploymentList";
 import DepartmentList from "./components/department/DepartmentList";
 import DepartmentDetails from "./components/department/DepartmentDetails";
 import EmployeeForm from "./components/employee/EmployeeForm";
+import DepartmentForm from "./components/department/DepartmentForm";
 
 
 function App() {
@@ -34,7 +35,10 @@ function App() {
                   <Route exact path='/employees/add' component={EmployeeForm} />
                   <Route exact path='/employees/edit/:empId' component={EmployeeForm} />
                   <Route exact path='/departments' component={DepartmentList} />
-                  <Route exact path='/departments/details/:deptId' component={DepartmentDetails} />
+                  <Route exact path='/departments/add' component={DepartmentForm} />
+                  <Route exact path='/departments/edit/:deptId' component={DepartmentForm} />
+
+
 
                       <Route exact path='/employments' component={EmploymentList} />
                   <Route exact path='/employments/details/:employmentId' component={EmploymentDetails} />

@@ -1,32 +1,34 @@
 import React from 'react';
 import formMode from "../../helpers/formHelper";
-import {addEmployeeApiCalls, getEmployeeByIdApiCall, updateEmployeeApiCalls} from "../../apiCalls/employeeApiCalls";
 import { checkRequired, checkTextLengthRange, checkEmail} from '../../helpers/validationCommon'
 import {Redirect} from "react-router-dom";
 import FormInput from "../../form/FormInput";
 import FormButtons from "../../form/FormButtons";
+import {
+    addDepartmentApiCalls,
+    getDepartmentByIdApiCall,
+    updateDepartmentApiCalls
+} from "../../apiCalls/departmentApiCalls";
 
 
-class EmployeeForm extends React.Component {
+class DepartmentForm extends React.Component {
     constructor(props) {
         super(props);
         console.log(props);
 
-        const paramsEmpId = props.match.params.empId;
-        const currentFormMode = paramsEmpId ? formMode.EDIT : formMode.NEW;
+        const paramsDeptId = props.match.params.deptId;
+        const currentFormMode = paramsDeptId ? formMode.EDIT : formMode.NEW;
 
         console.log(currentFormMode);
         this.state = {
-            empId: paramsEmpId,
-            emp: {
-                firstName: '',
-                lastName: '',
-                email: '',
+            deptId: paramsDeptId,
+            dept: {
+                deptName: '',
+                budget: ''
             },
             errors: {
-                firstName: '',
-                lastName: '',
-                email: '',
+                deptName: '',
+                budget: ''
             },
             formMode: currentFormMode,
             redirect: false,
@@ -34,8 +36,8 @@ class EmployeeForm extends React.Component {
         }
     }
 
-    fetchEmployeeDetails = () => {
-        getEmployeeByIdApiCall(this.state.empId)
+    fetchDepartmentDetails = () => {
+        getDepartmentByIdApiCall(this.state.deptId)
             .then(res => res.json())
             .then(
                 (data) => {
@@ -45,7 +47,7 @@ class EmployeeForm extends React.Component {
                     })
                 } else {
                     this.setState({
-                        emp: data,
+                        dept: data,
                         message: null
                     });
                 }
@@ -64,21 +66,21 @@ class EmployeeForm extends React.Component {
     componentDidMount() {
         const currentFormMode = this.state.formMode;
         if(currentFormMode === formMode.EDIT) {
-            this.fetchEmployeeDetails();
+            this.fetchDepartmentDetails();
         }
     }
 
     handleChange = (event) => {
         const { name, value } = event.target;
-        const emp = { ...this.state.emp };
-        emp[name] = value;
+        const dept = { ...this.state.dept };
+        dept[name] = value;
 
         const errorMessage = this.validateField(name, value);
         const errors = { ...this.state.errors };
         errors[name] = errorMessage;
 
         this.setState({
-            emp: emp,
+            dept: dept,
             errors: errors,
         })
 
@@ -86,7 +88,7 @@ class EmployeeForm extends React.Component {
 
     validateField = (fieldName, fieldValue) => {
         let errorMessage = '';
-        if(fieldName === 'firstName') {
+        if(fieldName === 'deptName') {
             if(!checkRequired(fieldValue)) {
                 errorMessage = 'Pole wymagane';
             } else if(!checkTextLengthRange(fieldValue, 2, 60)) {
@@ -94,23 +96,12 @@ class EmployeeForm extends React.Component {
             }
         }
 
-        if(fieldName === 'lastName') {
+        if(fieldName === 'budget') {
             if(!checkRequired(fieldValue)) {
                 errorMessage = 'Pole wymagane';
             } else if(!checkTextLengthRange(fieldValue, 2, 60)) {
                 errorMessage = 'Pole powinno byc od 2 do 60 znakow';
             }
-        }
-
-        if(fieldName === 'email') {
-            if(!checkRequired(fieldValue)) {
-                errorMessage = 'Pole wymagane';
-            } else if(!checkTextLengthRange(fieldValue, 2, 60)) {
-                errorMessage = 'Pole powinno byc od 2 do 60 znakow';
-            } else if (!checkEmail(fieldValue)) {
-                errorMessage = 'Pole powinno zaiwerac prawidlowy adres email';
-            }
-            return errorMessage
         }
     }
 
@@ -119,18 +110,17 @@ class EmployeeForm extends React.Component {
         const isValid = this.validateForm()
         if (isValid) {
             const
-                emp = this.state.emp,
+                dept = this.state.dept,
                 currentFormMode = this.state.formMode
             let promise;
             let response;
             if (currentFormMode === formMode.NEW) {
-                console.log("emp" + emp)
-                promise = addEmployeeApiCalls(emp)
+                promise = addDepartmentApiCalls(dept)
 
             } else if (currentFormMode === formMode.EDIT) {
-                console.log(emp)
-                const empId = this.state.empId
-                promise = updateEmployeeApiCalls(empId, emp)
+                console.log(dept)
+                const deptId = this.state.deptId
+                promise = updateDepartmentApiCalls(deptId, dept)
             }
             if (promise) {
                 promise
@@ -169,10 +159,10 @@ class EmployeeForm extends React.Component {
     }
 
     validateForm = () => {
-        const emp = this.state.emp;
+        const dept = this.state.dept;
         const errors = this.state.errors;
-        for(const fieldName in emp) {
-            const fieldValue = emp[fieldName];
+        for(const fieldName in dept) {
+            const fieldValue = dept[fieldName];
             const errorMessage = this.validateField(fieldName, fieldValue);
             errors[fieldName] = errorMessage;
         }
@@ -199,18 +189,18 @@ class EmployeeForm extends React.Component {
         console.log("this state" + this.state)
         if (redirect) {
             const currentFormMode = this.state.formMode
-            const notice = currentFormMode === formMode.NEW ? 'Pomyślnie dodano nowego pracownika' : 'Pomyślnie zaktualizowano nowego pracownika'
+            const notice = currentFormMode === formMode.NEW ? 'Pomyślnie dodano nowy departament' : 'Pomyślnie zaktualizowano nowy departament'
             return (
                 <Redirect to={{
-                    pathname: "/employees/"
+                    pathname: "/departments/"
 
                 }} />
             )
         }
 
-        const errorsSummary = this.hasErrors() ? 'Formularz zawiera błędy' : ''
-        const fetchError = this.state.error ? `Błąd: ${this.state.error.message}` : ''
-        const pageTitle = this.state.formMode === formMode.NEW ? 'Nowy pracownik' : 'Edycja pracownik'
+        const errorsSummary = this.hasErrors() ? 'Formularz zawiera błędy ' : ''
+        const fetchError = this.state.error ? `Błąd : ${this.state.error.message}` : ''
+        const pageTitle = this.state.formMode === formMode.NEW ? 'Nowy departament ' : 'Edycja departmanetu'
 
         const globalErrorMessage = errorsSummary || fetchError || this.state.message
 
@@ -220,38 +210,28 @@ class EmployeeForm extends React.Component {
                 <form className="form" onSubmit={this.handleSubmit}>
                     <FormInput
                         type="text"
-                        label="Imię"
+                        label="Nazwa departmanetu"
                         required
-                        error={this.state.errors.firstName}
-                        name="firstName"
+                        error={this.state.errors.deptName}
+                        name="deptName"
                         placeholder="2-60 znaków"
                         onChange={this.handleChange}
-                        value={this.state.emp.firstName}
+                        value={this.state.dept.deptName}
                     />
                     <FormInput
                         type="text"
-                        label="Nazwisko"
+                        label="Budzet"
                         required
-                        error={this.state.errors.lastName}
-                        name="lastName"
+                        error={this.state.errors.budget}
+                        name="budget"
                         placeholder="2-60 znaków"
                         onChange={this.handleChange}
-                        value={this.state.emp.lastName}
-                    />
-                    <FormInput
-                        type="text"
-                        label="Email"
-                        required
-                        error={this.state.errors.email}
-                        name="email"
-                        placeholder="np. nazwa@domena.pl"
-                        onChange={this.handleChange}
-                        value={this.state.emp.email}
+                        value={this.state.dept.budget}
                     />
                     <FormButtons
                         formMode={this.state.formMode}
                         error={globalErrorMessage}
-                        cancelPath="/employees"
+                        cancelPath="/departments"
                     />
                 </form>
             </main >
@@ -259,4 +239,4 @@ class EmployeeForm extends React.Component {
     }
 }
 
-export default EmployeeForm;
+export default DepartmentForm;
