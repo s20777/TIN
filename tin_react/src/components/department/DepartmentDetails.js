@@ -123,7 +123,7 @@ import {useParams} from "react-router-dom";
 import {getDepartmentByIdApiCall} from "../../apiCalls/departmentApiCalls";
 
 export default function DepartmentDetails() {
-    const [dept, setDept] = useState({});
+    const [dept, setDept] = useState({employments: []});
     let { deptId } = useParams();
     deptId = parseInt(deptId)
 
@@ -132,11 +132,12 @@ export default function DepartmentDetails() {
         getDepartmentByIdApiCall(deptId)
             .then(res => res.json())
             .then(data => {
+                console.log("department" + data);
                 setDept(data);
             })
             .catch(error => {
             });
-    }, []);
+    }, [deptId]);
 
     return (
         <main>
@@ -146,13 +147,24 @@ export default function DepartmentDetails() {
             <table className="table-list">
                 <thead>
                 <tr>
-                    <th>Departament</th>
+                    <th>Pracownik</th>
                     <th>Pensja</th>
                     <th>Data od </th>
                     <th>Data do </th>
                 </tr>
                 </thead>
                 <tbody>
+                {
+                    dept.employments.map(employment => (
+                        <tr key={employment._id}>
+                            <td>{employment.employee.firstName} {employment.employee.lastName}</td>
+                            <td>{employment.salary}</td>
+                            <td>{employment.dateFrom}</td>
+                            <td>{employment.dateTo}</td>
+                        </tr>
+                    ))
+                }
+
                 </tbody>
             </table>
 
