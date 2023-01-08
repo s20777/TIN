@@ -9,9 +9,10 @@ export default function EmployeeListTable(props){
                 <table className="table-list">
                     <thead>
                     <tr>
-                        <th>imie</th>
-                        <th>nazwisko</th>
-                        <th>email</th>
+                        <th>Imie</th>
+                        <th>Nazwisko</th>
+                        <th>Email</th>
+                        <th>Akcje</th>
                     </tr>
                     </thead>
                     <tbody>

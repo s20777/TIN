@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import {getEmployeesApiCall} from "../../apiCalls/employeeApiCalls";
 import EmployeeListTable from "../../table/EmployeeListTable";
+import {useLocation} from "react-router-dom";
 
 export default function EmployeeList() {
+    const location = useLocation();
     const [emps, setEmps] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -21,6 +23,10 @@ export default function EmployeeList() {
                 setError(error.message);
                 setLoading(true);
             });
+
+        const { state } = location;
+        const notice = state && state.notice ? state.notice : '';
+        setMessage(notice);
 
 
     }, []);

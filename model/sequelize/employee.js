@@ -50,10 +50,6 @@ const Employee = sequelize.define('Employee', {
                 msg: "Pole powinno zawierac prawidlowy adres email"
             }
         }
-    },
-    password: {
-        type: Sequelize.STRING,
-        allowNull: false
     }
 });
 

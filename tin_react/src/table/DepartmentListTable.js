@@ -11,8 +11,9 @@ export default function DepartmentListTable(props){
                 <table className="table-list">
                     <thead>
                     <tr>
-                        <th>nazwa departamentu</th>
-                        <th>zakres</th>
+                        <th>Nazwa departamentu</th>
+                        <th>Budzet </th>
+                        <th>Akcje</th>
                     </tr>
                     </thead>
                     <tbody>
