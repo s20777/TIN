@@ -32,6 +32,7 @@ RUN npm ci --silent
 RUN npm install cors --save
 RUN npm install react-scripts@3.4.1 -g --silent
 RUN npm install react-router-dom@5.2.0
+RUN npm install react-i18next i18next
 
 COPY . ./
 RUN npm run build

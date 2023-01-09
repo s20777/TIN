@@ -13,11 +13,11 @@ const Employee = sequelize.define('Employee', {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "Pole jest wymagane"
+                msg: "not Empty"
             },
             len: {
                 args : [2,60],
-                msg: "Pole powinno zawierac od 2 do 6 znakow"
+                msg: "len_2_60"
             }
         }
     },
@@ -50,6 +50,10 @@ const Employee = sequelize.define('Employee', {
                 msg: "Pole powinno zawierac prawidlowy adres email"
             }
         }
+    },
+    password : {
+        type: Sequelize.STRING,
+        defaultValue: ""
     }
 });
 

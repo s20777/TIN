@@ -1,5 +1,5 @@
 import React from 'react';
-import formMode from "../../helpers/formHelper";
+import formMode, {formValidationKeys} from "../../helpers/formHelper";
 import {addEmployeeApiCalls, getEmployeeByIdApiCall, updateEmployeeApiCalls} from "../../apiCalls/employeeApiCalls";
 import { checkRequired, checkTextLengthRange, checkEmail} from '../../helpers/validationCommon'
 import {Redirect} from "react-router-dom";
@@ -88,27 +88,27 @@ class EmployeeForm extends React.Component {
         let errorMessage = '';
         if(fieldName === 'firstName') {
             if(!checkRequired(fieldValue)) {
-                errorMessage = 'Pole wymagane';
+                errorMessage = formValidationKeys.notEmpty
             } else if(!checkTextLengthRange(fieldValue, 2, 60)) {
-                errorMessage = 'Pole powinno byc od 2 do 60 znakow';
+                errorMessage = formValidationKeys.len_2_60
             }
         }
 
         if(fieldName === 'lastName') {
             if(!checkRequired(fieldValue)) {
-                errorMessage = 'Pole wymagane';
+                errorMessage = formValidationKeys.notEmpty
             } else if(!checkTextLengthRange(fieldValue, 2, 60)) {
-                errorMessage = 'Pole powinno byc od 2 do 60 znakow';
+                errorMessage = formValidationKeys.len_2_60
             }
         }
 
         if(fieldName === 'email') {
             if(!checkRequired(fieldValue)) {
-                errorMessage = 'Pole wymagane';
+                errorMessage = formValidationKeys.notEmpty
             } else if(!checkTextLengthRange(fieldValue, 2, 60)) {
-                errorMessage = 'Pole powinno byc od 2 do 60 znakow';
+                errorMessage = formValidationKeys.len_2_60
             } else if (!checkEmail(fieldValue)) {
-                errorMessage = 'Pole powinno zaiwerac prawidlowy adres email';
+                errorMessage = formValidationKeys.isEmail
             }
             return errorMessage
         }
