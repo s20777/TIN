@@ -5,8 +5,8 @@ function FormInput(props) {
 
     const error = props.error
     const errorKey = getValidationErrorKeys(error)
-    const {t} = useTransition()
-    const translatedErrorMessage = t(errorKey)
+    // const {t} = useTransition()
+    // const translatedErrorMessage = t(errorKey)
 
     const className = props.error === '' ? '' : 'error-input';
     const name = props.name
@@ -27,7 +27,7 @@ function FormInput(props) {
                 placeholder={props.placeholder}
                 value={props.value}
                 onChange={props.onChange} />
-            <span id={errorSpanId} className="errors-text">{translatedErrorMessage}</span>
+            <span id={errorSpanId} className="errors-text">{error}</span>
         </>
     )
 }

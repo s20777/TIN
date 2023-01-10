@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 import {
     BrowserRouter as Router,
@@ -19,9 +19,34 @@ import DepartmentList from "./components/department/DepartmentList";
 import DepartmentDetails from "./components/department/DepartmentDetails";
 import EmployeeForm from "./components/employee/EmployeeForm";
 import DepartmentForm from "./components/department/DepartmentForm";
+import {getCurrentUser} from "./helpers/authHelper";
+import LoginForm from "./components/other/LoginForm";
 
 
 function App() {
+
+    const [user, setUser] = useState(null);
+    const [prevPath, setPrevPath] = useState(null);
+
+
+    const handleLogin = (user) => {
+        console.log(user);
+        localStorage.setItem("user", user);
+        setUser(user);
+        window.location.href = '/';
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem("user");
+        setUser(null);
+        window.location.href = '/';
+    };
+
+    useEffect(() => {
+        const currentUser = getCurrentUser();
+        setUser(currentUser);
+    }, [])
+
   return (
       <Router >
           <div>
@@ -44,6 +69,7 @@ function App() {
                   <Route exact path='/employments/details/:employmentId' component={EmploymentDetails} />
                   <Route exact path='/employments/add' component={EmploymentForm} />
                   <Route exact path='/employments/edit/:employmentId' component={EmploymentForm} />
+                      <Route exact path="/login" render={(props) => <LoginForm {...props} handleLogin={handleLogin} />} />
 
 
 
