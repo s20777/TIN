@@ -14,6 +14,7 @@ RUN npm i sequelize
 RUN npm i express-session
 RUN npm i bcryptjs
 RUN npm i i18n
+RUN npm i jsonwebtoken
 
 
 COPY . .

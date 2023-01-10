@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {getEmploymentsApiCall} from "../../apiCalls/employmentApiCalls";
 import EmploymentListTable from "../../table/EmploymentListTable";
 import {Link} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 
 export default function EmploymentList() {
@@ -9,6 +10,8 @@ export default function EmploymentList() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [message, setMessage] = useState('');
+    const { t } = useTranslation();
+
 
 
     useEffect(() => {
@@ -31,9 +34,9 @@ export default function EmploymentList() {
             <table className="table-list">
                 <thead>
                 <tr>
-                    <th>Pracownik</th>
-                    <th>Departament</th>
-                    <th>Akcje</th>
+                    <th>{ t('emps.fields.employee') }</th>
+                    <th>{ t('emps.fields.department') }</th>
+                    <th>{ t('list.actions.title') }</th>
                 </tr>
                 </thead>
                 <tbody>

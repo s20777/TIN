@@ -337,6 +337,8 @@ textarea {
         display: block;
     }
 
+
+
    body,
     nav,
     nav ul,
@@ -361,6 +363,25 @@ textarea {
     width: 120px;
     min-width: 120px;
   }
+
+    nav ul li button {
+        background-color: transparent;
+        border: 0;
+    }
+    nav ul li.lang {
+    margin-left: auto;
+    }
+
+    nav ul li a, nav ul li button {
+    color: #2c3e50;
+    display: inline-block;
+    padding: 1rem 2rem;
+    text-decoration: none;
+}
+    nav ul li a:hover, nav ul li button:hover {
+    background: #d35400;
+    color: #ecf0f1;
+}
 
 }
 
