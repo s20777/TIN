@@ -1,3 +1,5 @@
+import {getCurrentUser} from "../helpers/authHelper";
+
 const employeesBaseUrl = 'http://localhost:8080/api/employees'
 
 export function getEmployeesApiCall() {
@@ -12,14 +14,19 @@ export function getEmployeeByIdApiCall(empId) {
 
 export function addEmployeeApiCalls(emp) {
     console.log("emp: " +  emp)
+    const user = getCurrentUser()
     const empString = JSON.stringify(emp);
+    let token
+    if (user && user.token) {
+        token = user.token
+    }
 
 
     const options = {
         method: 'POST',
         headers : {
             'Content-Type': 'application/json',
-            'Accept': 'application/json'
+            'Authorization': 'Bearer' + token
         },
         body: JSON.stringify(emp),
     }

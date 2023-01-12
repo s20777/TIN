@@ -21,6 +21,7 @@ import EmployeeForm from "./components/employee/EmployeeForm";
 import DepartmentForm from "./components/department/DepartmentForm";
 import {getCurrentUser} from "./helpers/authHelper";
 import LoginForm from "./components/other/LoginForm";
+import ProtectedRoute from "./other/ProtectedRoute";
 
 
 function App() {
@@ -51,7 +52,7 @@ function App() {
       <Router >
           <div>
                 <Header/>
-                <Navigation/>
+              <Navigation handleLogout={handleLogout}/>
               <Route>
                   <Switch>
                   <Route exact path="/" component={MainContent} />
@@ -62,14 +63,12 @@ function App() {
                   <Route exact path='/departments' component={DepartmentList} />
                   <Route exact path='/departments/add' component={DepartmentForm} />
                   <Route exact path='/departments/edit/:deptId' component={DepartmentForm} />
-
-
-
-                      <Route exact path='/employments' component={EmploymentList} />
+                  <Route exact path='/departments/details/:deptId' component={DepartmentDetails} />
+                  <ProtectedRoute exact={true} path="/employments" component={EmploymentList} />
                   <Route exact path='/employments/details/:employmentId' component={EmploymentDetails} />
                   <Route exact path='/employments/add' component={EmploymentForm} />
                   <Route exact path='/employments/edit/:employmentId' component={EmploymentForm} />
-                      <Route exact path="/login" render={(props) => <LoginForm {...props} handleLogin={handleLogin} />} />
+                  <Route exact path="/login" render={(props) => <LoginForm {...props} handleLogin={handleLogin} />} />
 
 
 

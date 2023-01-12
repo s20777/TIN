@@ -107,7 +107,7 @@
     },
     "list": {
       "title": "Departments",
-      "addNew": "Dodaj nowego pracownika",
+      "addNew": "Dodaj nowy departament",
       "noData": "Brak pracowników w bazie",
       "pageTitle": "Lista pracowników"
     },

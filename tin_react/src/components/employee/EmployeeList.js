@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import {getEmployeesApiCall} from "../../apiCalls/employeeApiCalls";
 import EmployeeListTable from "../../table/EmployeeListTable";
 import {useLocation} from "react-router-dom";
+import {t} from "i18next";
 
 export default function EmployeeList() {
     const location = useLocation();
@@ -34,6 +35,10 @@ export default function EmployeeList() {
         <main>
             <h2>Lista</h2>
             <EmployeeListTable emps={emps} />
+            <p className="section-buttons">
+                <a href="/employees/add" className="button-add">{ t('emp.list.addNew') }</a>
+            </p>
+
         </main>
     )
 }

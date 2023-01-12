@@ -7,6 +7,9 @@ export function getDepartmentsApiCall() {
     return fetch(departmentBaseUrl);
 }
 
+export function getEmploymentDetailsApiCalls(employmentId) {
+    return fetch("http://localhost:8080/api/employments" + "/" + employmentId);
+}
 
 
 export function getDepartmentByIdApiCall(deptId) {
