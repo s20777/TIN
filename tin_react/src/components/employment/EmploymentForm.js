@@ -56,7 +56,6 @@ export default function EmploymentForm(){
                         }
                     })
 
-                // setGameId(data.find(x => x.id === rentDetails.game_id).id);
             })
             .catch(error => {
                 console.log(error);
@@ -105,9 +104,6 @@ export default function EmploymentForm(){
         }
 
 
-        // if (!rentDetails.id) {
-        //     setGameId(games.find(x => x.id === rentDetails.game_id).id);
-        // }
     }, []);
 
 
@@ -190,15 +186,15 @@ export default function EmploymentForm(){
     }
 
 
-    const pageTitle = (id ? formMode.EDIT : formMode.NEW) === formMode.NEW ? t('employments.new') : t('employments.edit');
+    const pageTitle = (id ? formMode.EDIT : formMode.NEW) === formMode.NEW ? t('emps.list.addNew') : t('emps.list.edit');
     if(isAuthenticated()){
         return (
             <main>
                 <h2>{pageTitle}</h2>
                 <form className='form' onSubmit={handleSubmit}>
-                    <label htmlFor='emp_id'>{ t('rentals.placeholders.form.chooseUser') }:</label>
+                    <label htmlFor='emp_id'>{ t('emps.fields.employee') }:</label>
                     {!id && <select name='emp_id' onChange={handleSelectChange} >
-                        <option value="">{ t('rentals.placeholders.form.chooseUser') }</option>
+                        <option value="">{ t('emps.fields.employee') }</option>
                         {
                             employees.map(emp => (
                                 <option key={emp._id} value={emp._id}>{emp.firstName} {emp.lastName}</option>
@@ -217,9 +213,9 @@ export default function EmploymentForm(){
                         </select>
                     }
 
-                    <label htmlFor='dept_id'>{ t('rentals.placeholders.form.chooseGame') }:</label>
+                    <label htmlFor='dept_id'>{ t('emps.fields.department') }:</label>
                     {!id && <select name='dept_id' onChange={handleSelectChange} >
-                        <option value="">{ t('rentals.placeholders.form.chooseGame') }</option>
+                        <option value="">{ t('emps.fields.department') }</option>
                         {
                             departments.map(dept => (
                                 <option key={dept.id} value={dept._id}>{dept.deptName}</option>
@@ -237,9 +233,9 @@ export default function EmploymentForm(){
                         </select>
                     }
 
-                    <FormInput type="date" label={ t('Date') } name="dateTo" value={to_when} onChange={handleChange}   />
-                    <FormInput type="date" label={ t('EndDate') } name="endDate" value={startDate} onChange={handleChangeEndData}   />
-                    <FormInput type="salary" label={ t('Salary') } name="salary" value={salary} onChange={handleChangeSalary}   />
+                    <FormInput type="date" label={ t('dept.fields.startDate') } name="dateTo" value={to_when} onChange={handleChange}   />
+                    <FormInput type="date" label={ t('dept.fields.finishDate') } name="endDate" value={startDate} onChange={handleChangeEndData}   />
+                    <FormInput type="salary" label={ t('emps.fields.salary') } name="salary" value={salary} onChange={handleChangeSalary}   />
 
 
                     <FormButtons mode={id ? formMode.EDIT : formMode.NEW} error={globalErrorMessage} cancelPath="/employments" />

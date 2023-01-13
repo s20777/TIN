@@ -24,16 +24,16 @@ export default function DepartmentDetails() {
 
     return (
         <main>
-            <h2>Nazwa departamentu: {dept.deptName}</h2>
-            <h2>Budżet: {dept.budget}</h2>
-            <h2>Szczegoły zatrudnienia: </h2>
+            <h2>{ t('dept.fields.deptName') }: {dept.deptName}</h2>
+            <h2>{ t('dept.fields.budget') }: {dept.budget}</h2>
+            <h2>{ t('list.actions.details') }: </h2>
             <table className="table-list">
                 <thead>
                 <tr>
-                    <th>Pracownik</th>
-                    <th>Pensja</th>
-                    <th>Data od </th>
-                    <th>Data do </th>
+                    <th>{ t('emps.fields.employee') }</th>
+                    <th>{ t('emp.fields.salary') }</th>
+                    <th>{ t('dept.fields.startDate') }</th>
+                    <th>{ t('dept.fields.finishDate') }</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -51,7 +51,7 @@ export default function DepartmentDetails() {
                 </tbody>
             </table>
             <p className="section-buttons">
-                <a href="/departments" className="button-add">powrot</a>
+                <a href="/departments" className="button-add">{ t('form.actions.return') }</a>
             </p>
 
         </main>

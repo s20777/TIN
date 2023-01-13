@@ -10,7 +10,7 @@ function FormInput(props) {
 
     const className = props.error === '' ? '' : 'error-input';
     const name = props.name
-    const errorSpanId = 'error'+name[0].toUpperCase() + name.slice(1);
+    const errorSpanId = 'error'
 
 
     return (

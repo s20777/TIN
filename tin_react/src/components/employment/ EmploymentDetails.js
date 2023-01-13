@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {getEmploymentByIdApiCall, getEmploymentsApiCall} from "../../apiCalls/employmentApiCalls";
 import EmploymentListTable from "../../table/EmploymentListTable";
 import {Link, useParams} from "react-router-dom";
+import {t} from "i18next";
 
 
 export default function EmploymentDetails() {
@@ -31,11 +32,12 @@ export default function EmploymentDetails() {
             <table className="table-list">
                 <thead>
                 <tr>
-                    <th>Pracownik </th>
-                    <th>Departament </th>
-                    <th>Start </th>
-                    <th>Koniec </th>
-                    <th>Akcje</th>
+                    <th>{ t('emps.fields.employee') }</th>
+                    <th>{ t('emps.fields.department') }</th>
+                    <th>{ t('emps.fields.startDate') }</th>
+                    <th>{ t('emps.fields.finishDate') }</th>
+                    <th>{ t('emps.fields.salary') }</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -44,11 +46,12 @@ export default function EmploymentDetails() {
                     <td>{emps.department ? emps.department.deptName: '-'}</td>
                     <td>{emps.dateFrom ? emps.dateFrom : '-'}</td>
                     <td>{emps.dateTo ? emps.dateTo : '-'}</td>
+                    <td>{emps.salary ? emps.salary : '-'}</td>
                 </tr>
                 </tbody>
             </table>
             <p className="section-buttons">
-                <a href="/employments" className="button-add">powrot</a>
+                <a href="/employments" className="button-add">{ t('form.actions.return') }</a>
             </p>
         </main>
     )

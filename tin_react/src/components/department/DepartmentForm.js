@@ -9,6 +9,7 @@ import {
     getDepartmentByIdApiCall,
     updateDepartmentApiCalls
 } from "../../apiCalls/departmentApiCalls";
+import {t} from "i18next";
 
 
 class DepartmentForm extends React.Component {
@@ -200,7 +201,7 @@ class DepartmentForm extends React.Component {
 
         const errorsSummary = this.hasErrors() ? 'Formularz zawiera błędy ' : ''
         const fetchError = this.state.error ? `Błąd : ${this.state.error.message}` : ''
-        const pageTitle = this.state.formMode === formMode.NEW ? 'Nowy departament ' : 'Edycja departmanetu'
+        const pageTitle = this.state.formMode === formMode.NEW ? t('dept.list.newDepartment') : t('dept.list.editDepartment')
 
         const globalErrorMessage = errorsSummary || fetchError || this.state.message
 
@@ -210,7 +211,7 @@ class DepartmentForm extends React.Component {
                 <form className="form" onSubmit={this.handleSubmit}>
                     <FormInput
                         type="text"
-                        label="Nazwa departmanetu"
+                        label={ t('dept.fields.deptName') }
                         required
                         error={this.state.errors.deptName}
                         name="deptName"
@@ -220,7 +221,7 @@ class DepartmentForm extends React.Component {
                     />
                     <FormInput
                         type="text"
-                        label="Budzet"
+                        label={ t('dept.fields.budget') }
                         required
                         error={this.state.errors.budget}
                         name="budget"

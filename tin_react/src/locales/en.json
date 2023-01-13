@@ -27,7 +27,8 @@
     "fields": {
       "firstName": "First name",
       "lastName": "Last name",
-      "email": "Email"
+      "email": "Email",
+      "salary": "Salary"
     },
     "list": {
       "add": "Add new employee",
@@ -77,7 +78,9 @@
       "title": "Departments",
       "addNew": "Add new department",
       "noData": "Brak pracowników w bazie",
-      "pageTitle": "Lista pracowników"
+      "pageTitle": "Lista pracowników",
+      "newDepartment": "New department",
+      "editDepartment": "Edit department"
     },
     "form": {
       "employment": "Historia zatrudnienia",
@@ -109,11 +112,15 @@
   "emps": {
     "fields": {
       "employee": "Employee",
-      "department": "Department"
+      "department": "Department",
+      "salary": "Salary",
+      "startDate": "Start Date",
+      "finishDate": "Finish Date"
     },
     "list": {
       "title": "Departments",
-      "addNew": "Add new employee",
+      "addNew": "Add new employment",
+      "edit": "Edit employment",
       "noData": "Brak pracowników w bazie",
       "pageTitle": "Lista pracowników"
     },
