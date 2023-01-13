@@ -3,6 +3,7 @@ import {getEmploymentsApiCall} from "../../apiCalls/employmentApiCalls";
 import EmploymentListTable from "../../table/EmploymentListTable";
 import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
+import {t} from "i18next";
 
 
 export default function EmploymentList() {
@@ -31,6 +32,7 @@ export default function EmploymentList() {
     }, []);
     return (
         <main>
+            <h2>List</h2>
             <table className="table-list">
                 <thead>
                 <tr>
@@ -58,6 +60,9 @@ export default function EmploymentList() {
                 }
                 </tbody>
             </table>
+            <p className="section-buttons">
+                <a href="/employments/add" className="button-add">Nowe zatrudnienie</a>
+            </p>
         </main>
     )
 }

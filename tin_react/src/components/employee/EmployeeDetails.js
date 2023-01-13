@@ -5,6 +5,7 @@ import EmployeeDetailsData from "../../table/EmployeeDetailsData";
 import EmployeeListTable from "../../table/EmployeeListTable";
 import EmployeeListTableRow from "../../table/EmployeeListTableRow";
 import {Link, useParams} from "react-router-dom";
+import {t} from "i18next";
 
 export default function EmployeeDetails() {
     const [emp, setEmp] = useState({employments: []});
@@ -25,17 +26,17 @@ export default function EmployeeDetails() {
 
     return (
         <main>
-            <h2>Imie: {emp.firstName}</h2>
-            <h2>Nazwisko: {emp.lastName}</h2>
-            <h2>Email:  {emp.email}</h2>
-            <h2>Szczegoły zatrudnienia: </h2>
+            <h2>{ t('emp.fields.firstName') }: {emp.firstName}</h2>
+            <h2>{ t('emp.fields.lastName') }: {emp.lastName}</h2>
+            <h2>{ t('emp.fields.email') }:  {emp.email}</h2>
+            <h2>{ t('list.actions.details') }: </h2>
             <table className="table-list">
                 <thead>
                 <tr>
-                    <th>Departament</th>
-                    <th>Pensja</th>
-                    <th>Data od </th>
-                    <th>Data do </th>
+                    <th>{ t('dept.fields.deptName') }</th>
+                    <th>{ t('dept.fields.budget') }</th>
+                    <th>{ t('dept.fields.startDate') }</th>
+                    <th>{ t('dept.fields.finishDate') }</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -51,25 +52,10 @@ export default function EmployeeDetails() {
                 }
                 </tbody>
             </table>
+            <p className="section-buttons">
+                <a href="/employees" className="button-add">{ t('form.actions.return') }</a>
+            </p>
 
         </main>
     )
 }
-
-// {
-//     "_id": 3,
-//     "salary": "3000.00",
-//     "dateFrom": "2020-12-02",
-//     "dateTo": null,
-//     "emp_id": 1,
-//     "dept_id": 2,
-//     "createdAt": "2023-01-07T18:12:18.000Z",
-//     "updatedAt": "2023-01-07T18:12:18.000Z",
-//     "department": {
-//     "_id": 2,
-//         "deptName": "AUC",
-//         "budget": "900000.00",
-//         "createdAt": "2023-01-07T18:12:18.000Z",
-//         "updatedAt": "2023-01-07T18:12:18.000Z"
-// }
-// }

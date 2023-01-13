@@ -54,4 +54,3 @@ export function updateEmployeeApiCalls(empId, emp) {
     const promise = fetch(url, options);
     return promise;
 }
-

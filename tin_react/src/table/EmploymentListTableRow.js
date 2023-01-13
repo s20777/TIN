@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import {getCurrentUser} from "../helpers/authHelper";
+
 
 function EmploymentListTableRow(props) {
     const employment = props.employmentData
@@ -14,6 +16,7 @@ function EmploymentListTableRow(props) {
                     <li><Link to={`/employment/details/${employment._id}`} className="list-actions-button-details">Szczegoly</Link></li>
                     <li><Link to={`/employment/edit/${employment._id}`} className="list-actions-button-details">Edytuj</Link></li>
                     <li><Link to={`/employment/delete/${employment._id}`} className="list-actions-button-details">usun</Link></li>
+
                 </ul>
             </td>
         </tr>

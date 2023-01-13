@@ -31,6 +31,7 @@
     },
     "list": {
       "title": "Pracownicy",
+      "add": "ddoaj nowego pracownika",
       "addNew": "Dodaj nowego pracownika",
       "noData": "Brak pracowników w bazie",
       "pageTitle": "Lista pracowników"
@@ -69,7 +70,7 @@
     },
     "list": {
       "title": "Departments",
-      "addNew": "Dodaj nowego pracownika",
+      "addNew": "Dodaj nowe zatrudnienie",
       "noData": "Brak pracowników w bazie",
       "pageTitle": "Lista pracowników"
     },
@@ -103,7 +104,9 @@
   "dept": {
     "fields": {
       "deptName": "Nazwa departamentu",
-      "budget": "Budżet"
+      "budget": "Budżet",
+      "startDate": "Data od",
+      "finishDate": "Data do"
     },
     "list": {
       "title": "Departments",

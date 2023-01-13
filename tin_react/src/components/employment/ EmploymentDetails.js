@@ -47,6 +47,9 @@ export default function EmploymentDetails() {
                 </tr>
                 </tbody>
             </table>
+            <p className="section-buttons">
+                <a href="/employments" className="button-add">powrot</a>
+            </p>
         </main>
     )
 }

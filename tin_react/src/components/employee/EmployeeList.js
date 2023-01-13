@@ -33,10 +33,10 @@ export default function EmployeeList() {
     }, []);
     return (
         <main>
-            <h2>Lista</h2>
+            <h2>List</h2>
             <EmployeeListTable emps={emps} />
             <p className="section-buttons">
-                <a href="/employees/add" className="button-add">{ t('emp.list.addNew') }</a>
+                <a href="/employees/add" className="button-add">{ t('emp.list.add') }</a>
             </p>
 
         </main>

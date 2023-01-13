@@ -1,10 +1,13 @@
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import React from "react";
-import {isAuthenticated} from "../helpers/authHelper";
+import {getCurrentUser, isAuthenticated} from "../helpers/authHelper";
 import {t} from "i18next";
+import {useTranslation} from "react-i18next";
 
 
 export default function EmployeeListTableRow({ emp }) {
+    const { t } = useTranslation();
+    const history = useHistory();
 
     return (
         <tr>

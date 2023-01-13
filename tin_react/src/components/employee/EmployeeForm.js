@@ -5,6 +5,7 @@ import { checkRequired, checkTextLengthRange, checkEmail} from '../../helpers/va
 import {Redirect} from "react-router-dom";
 import FormInput from "../../form/FormInput";
 import FormButtons from "../../form/FormButtons";
+import {t} from "i18next";
 
 
 class EmployeeForm extends React.Component {
@@ -210,7 +211,7 @@ class EmployeeForm extends React.Component {
 
         const errorsSummary = this.hasErrors() ? 'Formularz zawiera błędy' : ''
         const fetchError = this.state.error ? `Błąd: ${this.state.error.message}` : ''
-        const pageTitle = this.state.formMode === formMode.NEW ? 'Nowy pracownik' : 'Edycja pracownik'
+        const pageTitle = this.state.formMode === formMode.NEW ? t('emp.form.add.pageTitle') :  t('emp.form.edit.pageTitle')
 
         const globalErrorMessage = errorsSummary || fetchError || this.state.message
 
@@ -220,7 +221,7 @@ class EmployeeForm extends React.Component {
                 <form className="form" onSubmit={this.handleSubmit}>
                     <FormInput
                         type="text"
-                        label="Imię"
+                        label={ t('emp.fields.firstName') }
                         required
                         error={this.state.errors.firstName}
                         name="firstName"
@@ -230,7 +231,7 @@ class EmployeeForm extends React.Component {
                     />
                     <FormInput
                         type="text"
-                        label="Nazwisko"
+                        label={ t('emp.fields.lastName') }
                         required
                         error={this.state.errors.lastName}
                         name="lastName"
@@ -240,7 +241,7 @@ class EmployeeForm extends React.Component {
                     />
                     <FormInput
                         type="text"
-                        label="Email"
+                        label={ t('emp.fields.email') }
                         required
                         error={this.state.errors.email}
                         name="email"
