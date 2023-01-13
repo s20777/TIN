@@ -23,7 +23,9 @@ export default function EmploymentForm(){
     const [depId, setDepartmentId] = useState('');
     const [empId, setEmployeeId] = useState('');
     const [to_when, setToWhen] = useState('');
-    const [start, setStart] = useState('');
+    const [endData, setEndData] = useState('');
+    const [salary, setSalary] = useState('');
+    const [startDate, setStart] = useState('');
     const [department_count, setDepartmentCount] = useState('');
     // const [userIdError, setUserIdError] = useState('');
     // const [gameIdError, setGameIdError] = useState('');
@@ -33,7 +35,7 @@ export default function EmploymentForm(){
     const [departments, setDepartments] = useState([]);
     const [employees, setEmployees] = useState([]);
     const [employmentDetails, setEmploymentDetails] = useState({});
-    const [startDate, setStartDate] = useState({});
+
     const [loadingEmployee, setLoadingEmployee] = useState(true);
     const [loadingDepartment, setLoadingDepartment] = useState(true);
     const [loadingEmployment, setLoadingEmployment] = useState(true);
@@ -88,6 +90,15 @@ export default function EmploymentForm(){
                 })
         }
 
+        if(id){
+            getEmploymentDetailsApiCalls(id)
+                .then(res => res.json())
+                .then(data => {
+                    setEmploymentDetails(data)
+                    setStart(`${new Date(data?.start).getFullYear()}-${addZero(new Date(data.start).getMonth() + 1)}-${addZero(new Date(data.start).getDate())}`);
+                })
+        }
+
 
         const addZero = (i) => {
             return i < 10 ? `0${i}` : i;
@@ -104,7 +115,7 @@ export default function EmploymentForm(){
     const handleSubmit = (event) => {
         event.preventDefault();
         const isValid = "true"
-        const rent = {emp_id: empId, dept_id: depId, salary: "3000", "dateFrom": "2023-02-01","dateTo": to_when };
+        const rent = {emp_id: empId, dept_id: depId, salary: salary, "dateFrom": startDate,"dateTo": to_when };
         if(isValid){
             const currentFormMode = id ? formMode.EDIT : formMode.NEW;
             let promise;
@@ -163,6 +174,21 @@ export default function EmploymentForm(){
         }
     }
 
+    const handleChangeEndData = (event) => {
+        const { name, value } = event.target;
+        if(name === 'endDate'){
+            setStart(value);
+        }
+    }
+
+
+    const handleChangeSalary = (event) => {
+        const { name, value } = event.target;
+        if(name === 'salary'){
+            setSalary(value);
+        }
+    }
+
 
     const pageTitle = (id ? formMode.EDIT : formMode.NEW) === formMode.NEW ? t('employments.new') : t('employments.edit');
     if(isAuthenticated()){
@@ -211,7 +237,9 @@ export default function EmploymentForm(){
                         </select>
                     }
 
-                    <FormInput type="date" label={ t('rentals.placeholders.form.toWhenDate') } name="dateTo" value={to_when} onChange={handleChange}   />
+                    <FormInput type="date" label={ t('Date') } name="dateTo" value={to_when} onChange={handleChange}   />
+                    <FormInput type="date" label={ t('EndDate') } name="endDate" value={startDate} onChange={handleChangeEndData}   />
+                    <FormInput type="salary" label={ t('Salary') } name="salary" value={salary} onChange={handleChangeSalary}   />
 
 
                     <FormButtons mode={id ? formMode.EDIT : formMode.NEW} error={globalErrorMessage} cancelPath="/employments" />
