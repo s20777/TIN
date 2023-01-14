@@ -8,6 +8,9 @@
     "departments": "Departamenty",
     "employments": "Zatrudnienie"
   },
+  "auth": {
+    "pageTitle": "Zaloguj sie do portalu"
+  },
   "list": {
     "actions": {
       "title": "Akcje",
@@ -20,7 +23,8 @@
     "actions": {
       "return": "Powrót",
       "edit": "Edytuj",
-      "cancel": "Anuluj"
+      "cancel": "Anuluj",
+      "login": "Logowanie"
     }
   },
   "emp": {

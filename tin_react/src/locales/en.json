@@ -16,11 +16,15 @@
       "delete": "Delete"
     }
   },
+  "auth": {
+    "pageTitle": "log in to the portal "
+  },
   "form": {
     "actions": {
       "return": "Return",
       "edit": "Edit",
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "login": "Sign In"
     }
   },
   "emp": {

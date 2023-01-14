@@ -56,11 +56,11 @@ function App() {
               <Route>
                   <Switch>
                   <Route exact path="/" component={MainContent} />
-                  <Route exact path='/employees' component={EmployeeList} />
+                  <ProtectedRoute exact={true} path='/employees' component={EmployeeList} />
                   <Route exact path='/employees/details/:empId' component={EmployeeDetails} />
                   <Route exact path='/employees/add' component={EmployeeForm} />
                   <Route exact path='/employees/edit/:empId' component={EmployeeForm} />
-                  <Route exact path='/departments' component={DepartmentList} />
+                  <ProtectedRoute exact={true} path='/departments' component={DepartmentList} />
                   <Route exact path='/departments/add' component={DepartmentForm} />
                   <Route exact path='/departments/edit/:deptId' component={DepartmentForm} />
                   <Route exact path='/departments/details/:deptId' component={DepartmentDetails} />
