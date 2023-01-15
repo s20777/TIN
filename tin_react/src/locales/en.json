@@ -32,7 +32,8 @@
       "firstName": "First name",
       "lastName": "Last name",
       "email": "Email",
-      "salary": "Salary"
+      "salary": "Salary",
+      "password": "Password"
     },
     "list": {
       "add": "Add new employee",

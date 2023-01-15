@@ -32,7 +32,8 @@
       "firstName": "Imię",
       "lastName": "Nazwisko",
       "email": "Email",
-      "salary": "Pensja"
+      "salary": "Pensja",
+      "password": "Hasło"
     },
     "list": {
       "title": "Pracownicy",

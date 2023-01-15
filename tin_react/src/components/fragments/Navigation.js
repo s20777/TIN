@@ -23,7 +23,7 @@ class Navigation extends React.Component {
                     <li><Link to="/departments">{t('nav.departments')}</Link></li>
                     <li><Link to="/employments">{t('nav.employments')}</Link></li>
                     <li className='lang'>{loginLogoutLink}</li>
-                    <li><button onClick={() => {this.handleLanguageChange('pl') }}>PL</button></li>
+                    <li className='lang'><button onClick={() => {this.handleLanguageChange('pl') }}>PL</button></li>
                     <li><button onClick={() => {this.handleLanguageChange('en') }}>EN</button></li>
                 </ul>
             </nav>
